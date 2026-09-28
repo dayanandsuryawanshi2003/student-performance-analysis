@@ -64,6 +64,26 @@ The processed data is visualized through Power BI dashboards for:
 - Student Academic Journey
 - Teacher Subject Analysis
 
+## Power BI Dashboard Screenshots
+
+The project includes Power BI dashboards developed from the analysis-ready datasets generated through the Python and Pandas pipeline.
+
+### Admin – Academic Overview
+
+![Admin Academic Overview](screenshots/Admin-Academic%20Overview.png)
+
+### Program Performance
+
+![Program Performance](screenshots/Program_Performance.png)
+
+### Student Performance
+
+![Student Performance](screenshots/Student_Performance.png)
+
+### Teacher – Subject Performance
+
+![Teacher Subject Performance](screenshots/Teacher-%20Subject%20Performance.png)
+
 ## Technology Stack
 
 - Python
