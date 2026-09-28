@@ -1,0 +1,479 @@
+/* =====================================================
+   PERFORMANCE ANALYSIS
+   ===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+
+    color: #f5f7ff;
+
+    background:
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(105, 90, 255, .16),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(70, 150, 255, .15),
+            transparent 32%
+        ),
+        linear-gradient(
+            135deg,
+            #0d0915,
+            #111126 50%,
+            #071329
+        );
+
+    overflow-x: hidden;
+}
+
+
+/* =====================================================
+   PAGE CONTAINER
+   ===================================================== */
+
+body {
+    padding: 45px 5% 70px;
+}
+
+body > h1,
+body > a,
+body > hr,
+body > p,
+body > h2,
+body > h3,
+body > table {
+    position: relative;
+    z-index: 2;
+}
+
+body > h1 {
+    width: min(1200px, 100%);
+    margin: 0 auto 14px;
+
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -1.8px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #b9baff,
+            #83baff
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+
+/* =====================================================
+   BACK TO DASHBOARD
+   ===================================================== */
+
+body > a {
+    display: block;
+
+    width: min(1200px, 100%);
+    margin: 0 auto 28px;
+
+    color: #aeb5d9;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: .3s ease;
+}
+
+body > a:hover {
+    color: #ffffff;
+
+    transform:
+        translateX(-4px);
+}
+
+
+/* =====================================================
+   DIVIDER
+   ===================================================== */
+
+body > hr {
+    width: min(1200px, 100%);
+
+    margin: 0 auto 35px;
+
+    border: none;
+
+    border-top:
+        1px solid rgba(255,255,255,.08);
+}
+
+
+/* =====================================================
+   STUDENT SECTION
+   ===================================================== */
+
+body > h2 {
+    width: min(1200px, 100%);
+
+    margin: 0 auto 12px;
+
+    padding-top: 25px;
+
+    font-size: 24px;
+
+    color: #ffffff;
+}
+
+body > p {
+    width: min(1200px, 100%);
+
+    margin: 8px auto;
+
+    color: #9c96a8;
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+body > p strong {
+    color: #d9d5df;
+}
+
+
+/* =====================================================
+   STUDENT PERFORMANCE CARD EFFECT
+   ===================================================== */
+
+body > h2::before {
+    content: "";
+
+    display: inline-block;
+
+    width: 7px;
+    height: 7px;
+
+    margin-right: 10px;
+
+    vertical-align: middle;
+
+    border-radius: 50%;
+
+    background: #8d91ff;
+
+    box-shadow:
+        0 0 12px rgba(120,130,255,.9);
+}
+
+
+/* =====================================================
+   SUBJECT-WISE HEADING
+   ===================================================== */
+
+body > h3 {
+    width: min(1200px, 100%);
+
+    margin: 30px auto 15px;
+
+    font-size: 17px;
+
+    color: #c9c7ff;
+
+    letter-spacing: .2px;
+}
+
+
+/* =====================================================
+   PERFORMANCE TABLE
+   ===================================================== */
+
+body > table {
+    width: min(1200px, 100%);
+
+    margin: 0 auto 35px;
+
+    border-collapse: separate;
+    border-spacing: 0;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(130,140,255,.14);
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(28,28,55,.78),
+            rgba(10,14,30,.88)
+        );
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 20px 55px rgba(0,0,0,.28);
+
+    animation:
+        tableAppear .65s ease both;
+}
+
+@keyframes tableAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =====================================================
+   TABLE HEADER
+   ===================================================== */
+
+body > table tr:first-child {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(105,110,255,.14),
+            rgba(80,150,255,.07)
+        );
+}
+
+body > table th {
+    padding: 16px 14px;
+
+    color: #dfe1ff;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: .7px;
+
+    text-transform: uppercase;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.08);
+
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+   TABLE CELLS
+   ===================================================== */
+
+body > table td {
+    padding: 15px 14px;
+
+    color: #aaa5b5;
+
+    font-size: 12px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.055);
+
+    transition:
+        background .25s ease,
+        color .25s ease;
+}
+
+body > table tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =====================================================
+   TABLE HOVER
+   ===================================================== */
+
+body > table tr:not(:first-child):hover td {
+    background:
+        rgba(110,120,255,.07);
+
+    color: #f1eff7;
+}
+
+
+/* =====================================================
+   SUBJECT NAME
+   ===================================================== */
+
+body > table td:first-child {
+    color: #e7e3ed;
+
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   PERFORMANCE VALUES
+   ===================================================== */
+
+body > table td:nth-child(2),
+body > table td:nth-child(3),
+body > table td:nth-child(4),
+body > table td:nth-child(5) {
+    color: #c6c8ff;
+
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   GRADE
+   ===================================================== */
+
+body > table td:nth-child(6) {
+    color: #ffae9f;
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   PERFORMANCE LEVEL
+   ===================================================== */
+
+body > table td:nth-child(7) {
+    color: #8fc9ff;
+
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   SECTION SEPARATOR
+   ===================================================== */
+
+body > br + hr {
+    width: min(1200px, 100%);
+
+    margin: 15px auto 25px;
+
+    border: none;
+
+    border-top:
+        1px solid rgba(255,255,255,.06);
+}
+
+
+/* =====================================================
+   EMPTY STATE
+   ===================================================== */
+
+body > p:last-child {
+    width: min(1200px, 100%);
+
+    margin: 60px auto;
+
+    padding: 35px;
+
+    text-align: center;
+
+    border-radius: 18px;
+
+    color: #9690a1;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid rgba(255,255,255,.07);
+}
+
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+    body {
+        padding:
+            35px 4% 60px;
+    }
+
+    body > table {
+        display: block;
+
+        overflow-x: auto;
+
+        white-space: nowrap;
+
+        border-radius: 14px;
+    }
+
+    body > table th,
+    body > table td {
+        padding: 13px 12px;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+    body {
+        padding:
+            30px 18px 50px;
+    }
+
+    body > h1 {
+        font-size: 34px;
+
+        letter-spacing: -1px;
+    }
+
+    body > h2 {
+        font-size: 21px;
+    }
+
+    body > h3 {
+        font-size: 15px;
+    }
+
+    body > p {
+        font-size: 12px;
+    }
+
+    body > table {
+        margin-bottom: 25px;
+
+        font-size: 11px;
+    }
+
+    body > table th {
+        font-size: 9px;
+    }
+
+    body > table td {
+        font-size: 11px;
+    }
+
+    body > a {
+        font-size: 12px;
+    }
+}

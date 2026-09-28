@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+venv/
+env/
+ENV/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+
+# Python test/cache
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local database / backups
+*.sql
+*.sqlite
+*.db
+
+# Generated Power BI analysis files
+# Keep source code, not generated local outputs
+data/
+
+# Local project data
+data/
+
+# Power BI files
+*.pbix

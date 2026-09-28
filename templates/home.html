@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Performance System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+
+    <!-- BACKGROUND -->
+
+    <div class="background-effects">
+
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+        <div class="orb orb-three"></div>
+
+        <div class="grid-overlay"></div>
+
+    </div>
+
+
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                SP
+            </div>
+
+            <div class="logo-text">
+
+                <strong>
+                    Student Performance
+                </strong>
+
+                <span>
+                    Analysis System
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="nav-status">
+
+            <span class="status-dot"></span>
+
+            System Online
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- MAIN -->
+
+    <main class="hero-section">
+
+
+        <!-- LEFT -->
+
+        <div class="hero-content">
+
+
+            <div class="welcome-tag">
+
+                <span>✦</span>
+
+                Academic Analytics Platform
+
+            </div>
+
+
+
+            <h1>
+
+                Student Performance
+
+                <span>
+                    Analysis System
+                </span>
+
+            </h1>
+
+
+
+            <p class="hero-description">
+
+                An academic performance platform that
+                transforms student data into meaningful
+                insights for better academic decisions.
+
+            </p>
+
+
+
+            <!-- LOGIN PORTALS -->
+
+            <div class="login-section">
+
+                <p class="login-title">
+                    Choose your portal
+                </p>
+
+
+                <div class="login-cards">
+
+
+                    <!-- ADMIN -->
+
+                    <a href="{{ url_for('admin_login') }}"
+                       class="portal-card admin-portal"
+                       data-portal="Admin">
+
+
+                        <div class="portal-glow"></div>
+
+
+                        <div class="portal-icon">
+                            ⚙
+                        </div>
+
+
+                        <div class="portal-info">
+
+                            <span class="portal-label">
+                                SYSTEM CONTROL
+                            </span>
+
+                            <h3>
+                                Admin
+                            </h3>
+
+                            <p>
+                                Manage students, teachers,
+                                academic data and system records.
+                            </p>
+
+                        </div>
+
+
+                        <div class="portal-enter">
+
+                            <span>
+                                ACCESS PORTAL
+                            </span>
+
+                            <strong>
+                                ↗
+                            </strong>
+
+                        </div>
+
+
+                    </a>
+
+
+
+                    <!-- TEACHER -->
+
+                    <a href="{{ url_for('teacher_login') }}"
+                       class="portal-card teacher-portal"
+                       data-portal="Teacher">
+
+
+                        <div class="portal-glow"></div>
+
+
+                        <div class="portal-icon">
+                            ◉
+                        </div>
+
+
+                        <div class="portal-info">
+
+                            <span class="portal-label">
+                                ACADEMIC MANAGEMENT
+                            </span>
+
+                            <h3>
+                                Teacher
+                            </h3>
+
+                            <p>
+                                Manage attendance, tests,
+                                assignments and performance.
+                            </p>
+
+                        </div>
+
+
+                        <div class="portal-enter">
+
+                            <span>
+                                ACCESS PORTAL
+                            </span>
+
+                            <strong>
+                                ↗
+                            </strong>
+
+                        </div>
+
+
+                    </a>
+
+
+
+                    <!-- STUDENT -->
+
+                    <a href="{{ url_for('student_login') }}"
+                       class="portal-card student-portal"
+                       data-portal="Student">
+
+
+                        <div class="portal-glow"></div>
+
+
+                        <div class="portal-icon">
+                            ♙
+                        </div>
+
+
+                        <div class="portal-info">
+
+                            <span class="portal-label">
+                                PERSONAL INSIGHTS
+                            </span>
+
+                            <h3>
+                                Student
+                            </h3>
+
+                            <p>
+                                View academic performance,
+                                results and personalized insights.
+                            </p>
+
+                        </div>
+
+
+                        <div class="portal-enter">
+
+                            <span>
+                                ENTER MY PORTAL
+                            </span>
+
+                            <strong>
+                                ↗
+                            </strong>
+
+                        </div>
+
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- RIGHT ANALYTICS -->
+
+        <div class="analytics-visual">
+
+
+            <div class="visual-glow"></div>
+
+
+            <div class="analytics-card">
+
+
+                <div class="analytics-header">
+
+                    <div>
+
+                        <span>
+                            PERFORMANCE OVERVIEW
+                        </span>
+
+                        <h2>
+                            Academic Analytics
+                        </h2>
+
+                    </div>
+
+
+                    <div class="analytics-icon">
+                        ↗
+                    </div>
+
+                </div>
+
+
+
+                <div class="score-area">
+
+                    <div class="score-circle">
+
+                        <div class="score-inner">
+
+                            <strong>
+                                85%
+                            </strong>
+
+                            <span>
+                                Overall
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="performance-bars">
+
+
+                    <div class="bar-item">
+
+                        <div class="bar-info">
+
+                            <span>
+                                Attendance
+                            </span>
+
+                            <strong>
+                                90%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="bar">
+
+                            <div class="bar-fill attendance"></div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="bar-item">
+
+                        <div class="bar-info">
+
+                            <span>
+                                Assignments
+                            </span>
+
+                            <strong>
+                                82%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="bar">
+
+                            <div class="bar-fill assignment"></div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="bar-item">
+
+                        <div class="bar-info">
+
+                            <span>
+                                Tests
+                            </span>
+
+                            <strong>
+                                84%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="bar">
+
+                            <div class="bar-fill tests"></div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="analytics-footer">
+
+                    <span class="mini-dot"></span>
+
+                    Performance insights at a glance
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="floating-stat stat-one">
+
+                <span>
+                    ↗
+                </span>
+
+                <div>
+
+                    <strong>
+                        +12%
+                    </strong>
+
+                    <small>
+                        Performance
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="floating-stat stat-two">
+
+                <span>
+                    ✓
+                </span>
+
+                <div>
+
+                    <strong>
+                        Good
+                    </strong>
+
+                    <small>
+                        Performance Level
+                    </small>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <div>
+
+            <strong>
+                Student Performance Analysis System
+            </strong>
+
+            <span>
+                Academic Data • Performance • Insights
+            </span>
+
+        </div>
+
+
+        <p>
+            © 2026 Student Performance System
+        </p>
+
+    </footer>
+
+
+
+    <!-- =========================
+         PORTAL LOADING OVERLAY
+         ========================= -->
+
+    <div class="portal-loading">
+
+        <div class="loading-content">
+
+
+            <div class="loading-ring">
+
+                <div class="loading-ring-inner"></div>
+
+            </div>
+
+
+            <span class="loading-small">
+                CONNECTING
+            </span>
+
+
+            <h2>
+                Opening <span id="portal-name">Portal</span>
+            </h2>
+
+
+            <p>
+                Preparing your secure workspace...
+            </p>
+
+
+            <div class="loading-line">
+
+                <div class="loading-line-progress"></div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         PORTAL CLICK SCRIPT
+         ========================= -->
+
+    <script>
+
+        const portalCards =
+            document.querySelectorAll(".portal-card");
+
+        const loadingScreen =
+            document.querySelector(".portal-loading");
+
+        const portalName =
+            document.getElementById("portal-name");
+
+
+        portalCards.forEach(card => {
+
+            card.addEventListener("click", function(event) {
+
+                event.preventDefault();
+
+
+                const target =
+                    this.getAttribute("href");
+
+                const portal =
+                    this.getAttribute("data-portal");
+
+
+                portalName.textContent =
+                    portal;
+
+
+                /*
+                    Prevent multiple clicks
+                */
+
+                portalCards.forEach(item => {
+
+                    item.classList.add("portal-disabled");
+
+                });
+
+
+                /*
+                    Show loading screen
+                */
+
+                loadingScreen.classList.add(
+                    "loading-active"
+                );
+
+
+                /*
+                    Navigate after animation
+                */
+
+                setTimeout(() => {
+
+                    window.location.href =
+                        target;
+
+                }, 1250);
+
+            });
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
+

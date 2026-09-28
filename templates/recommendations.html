@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>My Recommendations</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/recommendations.css') }}">
+
+</head>
+
+<body>
+
+    <h1>My Recommendations</h1>
+
+    <br>
+
+    {% if session.get("student_id") %}
+
+    <a href="{{ url_for('student_dashboard') }}">
+        ← Back to Student Dashboard
+    </a>
+
+    {% elif session.get("teacher_id") %}
+
+    <a href="{{ url_for('teacher_dashboard') }}">
+        ← Back to Teacher Dashboard
+    </a>
+
+    {% elif session.get("admin_id") %}
+
+    <a href="{{ url_for('admin_dashboard') }}">
+        ← Back to Admin Dashboard
+    </a>
+
+    {% endif %}
+
+    <hr>
+
+
+    {% if recommendation_data %}
+
+        {% for student in recommendation_data %}
+
+
+            <!-- =====================================================
+                 STUDENT SUMMARY
+                 ===================================================== -->
+
+            <h2>
+                {{ student.Name }} - {{ student.Roll_No }}
+            </h2>
+
+            <p>
+                <strong>Semester:</strong>
+                {{ student.Semester_Name }}
+            </p>
+
+            <p>
+                <strong>Overall Performance:</strong>
+                {{ student.Overall }}%
+            </p>
+
+            <hr>
+
+
+            <!-- =====================================================
+                 PERFORMANCE ANALYSIS
+                 ===================================================== -->
+
+            <h2>📊 Performance Analysis</h2>
+
+            <p>
+                <strong>Strong Performing Subject:</strong>
+                {{ student.Strong_Subject }}
+            </p>
+
+            <p>
+                <strong>Subject to Improve:</strong>
+                {{ student.Weak_Subject }}
+            </p>
+
+            <h3>Study Recommendation</h3>
+
+            <p>
+                {{ student.Academic_Advice }}
+            </p>
+
+            <hr>
+
+
+            <!-- =====================================================
+                 CAREER RECOMMENDATION
+                 ===================================================== -->
+
+            <h2>🎯 Career Recommendation</h2>
+
+            <h3>
+                Suggested Career Domain:
+                {{ student.Career_Domain }}
+            </h3>
+
+            <p>
+                <strong>Performance-based Suitability:</strong>
+                {{ student.Career_Suitability }}%
+            </p>
+
+            <p>
+                {{ student.Career_Explanation }}
+            </p>
+
+
+            <!-- =====================================================
+                 SUBJECTS USED FOR CAREER RECOMMENDATION
+                 ===================================================== -->
+
+            {% if student.Matching_Subjects %}
+
+                <h3>📚 Subjects Supporting This Recommendation</h3>
+
+                <p>
+                    The following subjects contributed to the
+                    recommendation of this career domain:
+                </p>
+
+                <ul>
+
+                    {% for subject in student.Matching_Subjects %}
+
+                        <li>
+
+                            <strong>
+                                {{ subject.Subject_Name }}
+                            </strong>
+
+                            -
+                            {{ subject.Performance_Score }}%
+
+                        </li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% endif %}
+
+
+            <!-- =====================================================
+                 RECOMMENDED CAREER DOMAIN INFORMATION
+                 ===================================================== -->
+
+            {% if student.Career_Domain_Info %}
+
+                <h3>💡 Recommended Domain Information</h3>
+
+                <p>
+                    <strong>Languages:</strong>
+                    {{ student.Career_Domain_Info.Languages }}
+                </p>
+
+                <p>
+                    <strong>Tools:</strong>
+                    {{ student.Career_Domain_Info.Tools }}
+                </p>
+
+                <p>
+                    <strong>Certifications:</strong>
+                    {{ student.Career_Domain_Info.Certifications }}
+                </p>
+
+                <p>
+                    <strong>Projects:</strong>
+                    {{ student.Career_Domain_Info.Projects }}
+                </p>
+
+            {% endif %}
+
+
+            <!-- =====================================================
+                 CAREER & SKILL RECOMMENDATION
+                 ===================================================== -->
+
+            <h3>💼 Career & Skill Recommendation</h3>
+
+            <p>
+                {{ student.Learning_Resources }}
+            </p>
+
+
+            <!-- =====================================================
+                 OTHER CAREER DOMAINS
+                 ===================================================== -->
+
+            {% set other_domains = [] %}
+
+            {% if student.Top_Career_Domains %}
+
+                {% for career in student.Top_Career_Domains %}
+
+                    {% if career.Domain_Name != student.Career_Domain %}
+
+                        {% set ignored = other_domains.append(career) %}
+
+                    {% endif %}
+
+                {% endfor %}
+
+            {% endif %}
+
+
+            {% if other_domains %}
+
+                <h2>🔎 Other Suitable Career Domains</h2>
+
+                <p>
+                    Other domains with relevant subject performance:
+                </p>
+
+                <ul>
+
+                    {% for career in other_domains %}
+
+                        <li>
+
+                            <strong>
+                                {{ career.Domain_Name }}
+                            </strong>
+
+                            -
+                            {{ career.Suitability_Score }}%
+
+                        </li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% endif %}
+
+
+            <hr>
+
+        {% endfor %}
+
+
+    {% else %}
+
+        <p>
+            No recommendation data available yet.
+        </p>
+
+    {% endif %}
+
+
+</body>
+
+</html>

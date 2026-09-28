@@ -1,0 +1,265 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+ 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+ 
+    <title>Student Dashboard</title> 
+ 
+    <link rel="stylesheet" 
+          href="{{ url_for('static', filename='css/student_dashboard.css') }}"> 
+</head> 
+ 
+<body> 
+ 
+    <div class="background"> 
+        <div class="orb orb-one"></div> 
+        <div class="orb orb-two"></div> 
+        <div class="grid"></div> 
+    </div> 
+ 
+ 
+    <header class="topbar"> 
+ 
+        <div class="brand"> 
+            <span class="brand-mark">◆</span> 
+            <span>Student Performance System</span> 
+        </div> 
+ 
+        <a href="{{ url_for('student_logout') }}" class="logout-btn"> 
+            Logout 
+        </a> 
+ 
+    </header> 
+ 
+ 
+    <main class="dashboard"> 
+ 
+        <!-- Welcome --> 
+        <section class="welcome-section"> 
+ 
+            <div class="access-tag"> 
+                <span class="pulse-dot"></span> 
+                STUDENT DASHBOARD 
+            </div> 
+ 
+            <h1> 
+                Welcome, 
+                <span>{{ student.Name }}</span> 
+            </h1> 
+ 
+            <p class="description"> 
+                Track your academic progress, attendance, 
+                assessments and performance from your personal dashboard. 
+            </p> 
+ 
+        </section> 
+ 
+ 
+        <!-- Student Information --> 
+        <section class="student-profile"> 
+ 
+            <div class="profile-header"> 
+ 
+                <div> 
+                    <span class="section-label"> 
+                        ACADEMIC PROFILE 
+                    </span> 
+ 
+                    <h2>Student Information</h2> 
+                </div> 
+ 
+                <div class="profile-icon"> 
+                    🎓 
+                </div> 
+ 
+            </div> 
+ 
+ 
+            <div class="profile-grid"> 
+ 
+                <div class="info-item"> 
+                    <span>Name</span> 
+                    <strong>{{ student.Name }}</strong> 
+                </div> 
+ 
+                <div class="info-item"> 
+                    <span>Roll No</span> 
+                    <strong>{{ student.Roll_No }}</strong> 
+                </div> 
+ 
+                <div class="info-item"> 
+                    <span>Department</span> 
+                    <strong>{{ student.Department_Name }}</strong> 
+                </div> 
+ 
+                <div class="info-item"> 
+                    <span>Program</span> 
+                    <strong>{{ student.Program_Name }}</strong> 
+                </div> 
+ 
+                <div class="info-item"> 
+                    <span>Semester</span> 
+                    <strong>{{ student.Semester_Name }}</strong> 
+                </div> 
+ 
+            </div> 
+ 
+        </section> 
+ 
+ 
+        <!-- Academic Modules --> 
+        <section class="modules-section"> 
+ 
+            <div class="section-heading"> 
+ 
+                <div> 
+                    <span class="section-label"> 
+                        MY ACADEMICS 
+                    </span> 
+ 
+                    <h2>Academic Overview</h2> 
+                </div> 
+ 
+                <span class="section-number"> 
+                    06 MODULES 
+                </span> 
+ 
+            </div> 
+ 
+ 
+            <div class="cards-grid"> 
+ 
+                <a href="{{ url_for('student_attendance') }}" 
+                   class="dashboard-card"> 
+ 
+                    <div class="card-number">01</div> 
+ 
+                    <div class="card-icon">📊</div> 
+ 
+                    <div class="card-content"> 
+                        <h3>Attendance Report</h3> 
+                        <p>View your attendance records and status.</p> 
+                    </div> 
+ 
+                    <span class="card-arrow">→</span> 
+ 
+                </a> 
+ 
+ 
+                <a href="{{ url_for('student_assignments') }}" 
+                   class="dashboard-card"> 
+ 
+                    <div class="card-number">02</div> 
+ 
+                    <div class="card-icon">📝</div> 
+ 
+                    <div class="card-content"> 
+                        <h3>Assignment Marks</h3> 
+                        <p>View your assignment marks and records.</p> 
+                    </div> 
+ 
+                    <span class="card-arrow">→</span> 
+ 
+                </a> 
+ 
+ 
+                <a href="{{ url_for('student_tests') }}" 
+                   class="dashboard-card"> 
+ 
+                    <div class="card-number">03</div> 
+ 
+                    <div class="card-icon">📚</div> 
+ 
+                    <div class="card-content"> 
+                        <h3>Test Marks</h3> 
+                        <p>View your test assessment marks.</p> 
+                    </div> 
+ 
+                    <span class="card-arrow">→</span> 
+ 
+                </a> 
+ 
+ 
+                <a href="{{ url_for('open_student_powerbi') }}" 
+                   class="dashboard-card highlight-card"> 
+ 
+                    <div class="card-number">04</div> 
+ 
+                    <div class="card-icon">📈</div> 
+ 
+                    <div class="card-content"> 
+                        <h3>My Performance</h3> 
+                        <p>Analyze your academic performance.</p> 
+                    </div> 
+ 
+                    <span class="card-arrow">→</span> 
+ 
+                </a> 
+ 
+ 
+                <a href="{{ url_for('recommendations') }}" 
+                   class="dashboard-card"> 
+ 
+                    <div class="card-number">05</div> 
+ 
+                    <div class="card-icon">💡</div> 
+ 
+                    <div class="card-content"> 
+                        <h3>My Recommendations</h3> 
+                        <p>View recommendations based on performance.</p> 
+                    </div> 
+ 
+                    <span class="card-arrow">→</span> 
+ 
+                </a> 
+ 
+ 
+                <a href="{{ url_for('career_domains') }}" 
+                   class="dashboard-card career-card"> 
+ 
+                    <div class="card-number">06</div> 
+ 
+                    <div class="card-icon">🚀</div> 
+ 
+                    <div class="card-content"> 
+                        <h3>Career Domains</h3> 
+                        <p>Explore suitable career domains.</p> 
+                    </div> 
+ 
+                    <span class="card-arrow">→</span> 
+ 
+                </a>
+
+                <!-- <a href="{{ url_for('report') }}" 
+                   class="dashboard-card"> 
+ 
+                    <div class="card-number">07</div> 
+ 
+                    <div class="card-icon">📄</div> 
+ 
+                    <div class="card-content"> 
+                        <h3>My Report</h3> 
+                        <p>View your complete academic performance report.</p> 
+                    </div> 
+ 
+                    <span class="card-arrow">→</span> 
+ 
+                </a> -->
+ 
+            </div> 
+ 
+        </section> 
+ 
+    </main> 
+ 
+ 
+    <footer> 
+        Student Performance System 
+        <span>•</span> 
+        Student Academic Portal 
+    </footer> 
+ 
+</body> 
+</html>

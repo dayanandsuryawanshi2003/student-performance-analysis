@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Attendance Management</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/attendance.css') }}">
+
+</head>
+
+<body>
+
+    <h1>Attendance Management</h1>
+
+    <a href="{{ url_for('teacher_dashboard') }}">
+        Back to Dashboard
+    </a>
+
+    <hr>
+
+    <h2>Mark Attendance</h2>
+
+    <form method="POST"
+          action="{{ url_for('attendance') }}">
+
+        <!-- Program -->
+
+        <label>Program:</label>
+
+        <select name="program_id"
+                id="attendance_program_id"
+                required>
+
+            <option value="">
+                Select Program
+            </option>
+
+            {% for program in programs %}
+
+            <option value="{{ program.Program_ID }}">
+                {{ program.Program_Name }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+        <br><br>
+
+
+        <!-- Semester -->
+
+        <label>Semester:</label>
+
+        <select name="semester_id"
+                id="attendance_semester_id"
+                required>
+
+            <option value="">
+                Select Program First
+            </option>
+
+        </select>
+
+        <br><br>
+
+
+        <!-- Subject -->
+
+        <label>Subject:</label>
+
+        <select name="subject_id"
+                id="attendance_subject_id"
+                required>
+
+            <option value="">
+                Select Semester First
+            </option>
+
+        </select>
+
+        <br><br>
+
+
+        <!-- Date -->
+
+        <label>Attendance Date:</label>
+
+        <input type="date"
+               name="attendance_date"
+               required>
+
+        <br><br>
+
+
+        <!-- Students -->
+
+        <div id="students_container">
+
+            <p>
+                Select Program, Semester and Subject
+                to load students.
+            </p>
+
+        </div>
+
+        <br>
+
+        <button type="submit">
+            Save Attendance
+        </button>
+
+    </form>
+
+
+    <hr>
+
+    <script src="{{ url_for('static',
+                   filename='js/attendance.js') }}">
+    </script>
+
+</body>
+
+</html>

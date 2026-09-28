@@ -1,0 +1,435 @@
+/* =========================================================
+   ASSIGNMENT MANAGEMENT PAGE
+   Teacher Dashboard Theme
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    padding: 40px 6%;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #f3f5ff;
+
+    background:
+        radial-gradient(circle at 15% 20%, rgba(0, 210, 190, 0.12), transparent 28%),
+        radial-gradient(circle at 85% 15%, rgba(50, 120, 255, 0.14), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(80, 60, 200, 0.12), transparent 32%),
+        #080b18;
+
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Background grid */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+
+    background-size: 45px 45px;
+}
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 750;
+    letter-spacing: -1px;
+    margin-bottom: 14px;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #6ee7df,
+        #65a8ff
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+body > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #8de8df;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    padding: 9px 15px;
+    border: 1px solid rgba(110, 231, 223, 0.25);
+    border-radius: 9px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+body > a::before {
+    content: "←";
+    font-size: 1.1rem;
+}
+
+body > a:hover {
+    color: #ffffff;
+    background: rgba(110, 231, 223, 0.10);
+    border-color: rgba(110, 231, 223, 0.5);
+    transform: translateX(-3px);
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    margin: 30px 0;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(110, 231, 223, 0.25),
+        rgba(101, 168, 255, 0.25),
+        transparent
+    );
+}
+
+/* =========================================================
+   SECTION HEADINGS
+   ========================================================= */
+
+h2 {
+    font-size: 1.45rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-weight: 650;
+}
+
+h3 {
+    color: #8de8df;
+}
+
+/* =========================================================
+   ASSIGNMENT FORM
+   ========================================================= */
+
+form {
+    max-width: 900px;
+    padding: 28px;
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 18px;
+
+    background: rgba(16, 21, 39, 0.72);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Labels */
+form label {
+    display: block;
+    margin-bottom: 8px;
+
+    color: #b9c2d8;
+    font-size: 0.92rem;
+    font-weight: 600;
+}
+
+/* Select boxes */
+form select {
+    width: 100%;
+    min-height: 46px;
+
+    padding: 11px 14px;
+
+    color: #eef3ff;
+    background: #11172a;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+
+    font-size: 0.95rem;
+    outline: none;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+form select:hover {
+    border-color: rgba(110, 231, 223, 0.35);
+}
+
+form select:focus {
+    border-color: #6ee7df;
+
+    box-shadow:
+        0 0 0 3px rgba(110, 231, 223, 0.10),
+        0 0 20px rgba(110, 231, 223, 0.08);
+
+    background: #141b30;
+}
+
+form select option {
+    background: #11172a;
+    color: #ffffff;
+}
+
+/* =========================================================
+   STUDENT SECTION
+   ========================================================= */
+
+#student_section {
+    margin-top: 20px;
+    padding: 18px;
+
+    min-height: 60px;
+
+    border: 1px solid rgba(110, 231, 223, 0.12);
+    border-radius: 12px;
+
+    background: rgba(110, 210, 200, 0.035);
+
+    color: #929db6;
+}
+
+#student_section p {
+    color: #929db6;
+    line-height: 1.6;
+}
+
+/* Dynamically generated student inputs */
+#student_section input {
+    width: 100%;
+    min-height: 42px;
+
+    padding: 9px 12px;
+
+    color: #ffffff;
+    background: #0d1324;
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 8px;
+
+    outline: none;
+
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+#student_section input:focus {
+    border-color: #6ee7df;
+
+    box-shadow:
+        0 0 0 3px rgba(110, 231, 223, 0.08);
+}
+
+/* =========================================================
+   SAVE BUTTON
+   ========================================================= */
+
+form button {
+    margin-top: 8px;
+
+    min-height: 46px;
+    padding: 0 24px;
+
+    border: 0;
+    border-radius: 10px;
+
+    color: #061316;
+    background: linear-gradient(
+        135deg,
+        #6ee7df,
+        #4db8ff
+    );
+
+    font-size: 0.95rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(77, 184, 255, 0.18);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
+}
+
+form button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(77, 184, 255, 0.28);
+
+    filter: brightness(1.08);
+}
+
+form button:active {
+    transform: translateY(0);
+}
+
+/* =========================================================
+   ASSIGNMENT RECORDS
+   ========================================================= */
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 14px;
+
+    background: rgba(16, 21, 39, 0.72);
+    backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.25);
+}
+
+th {
+    padding: 15px 16px;
+
+    color: #dffcf9;
+    background: rgba(110, 231, 223, 0.09);
+
+    font-size: 0.88rem;
+    font-weight: 650;
+    text-align: left;
+
+    border-bottom: 1px solid rgba(110, 231, 223, 0.16);
+}
+
+td {
+    padding: 14px 16px;
+
+    color: #b9c2d8;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+
+    font-size: 0.91rem;
+}
+
+tbody tr:last-child td,
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr {
+    transition: background 0.2s ease;
+}
+
+tr:hover {
+    background: rgba(110, 231, 223, 0.045);
+}
+
+td:first-child {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+td:last-child {
+    color: #8de8df;
+    font-weight: 700;
+}
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+body > p {
+    max-width: 700px;
+    padding: 18px 20px;
+
+    color: #929db6;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.025);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    body {
+        padding: 30px 4%;
+    }
+
+    form {
+        padding: 22px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    th,
+    td {
+        padding: 12px 14px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    body {
+        padding: 24px 18px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+    }
+
+    form {
+        padding: 18px;
+        border-radius: 14px;
+    }
+
+    form button {
+        width: 100%;
+    }
+
+    body > a {
+        width: 100%;
+        justify-content: center;
+    }
+}

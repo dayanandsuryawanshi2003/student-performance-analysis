@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Test Management</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/test_management.css') }}">
+
+</head>
+
+<body>
+
+    <h1>Test Management</h1>
+
+    <a href="{{ url_for('teacher_dashboard') }}">
+        Back to Dashboard
+    </a>
+
+    <hr>
+
+    <h2>Enter Test Marks</h2>
+
+    <form method="POST"
+          action="{{ url_for('tests') }}">
+
+        <!-- Program -->
+
+        <label>Program:</label>
+
+        <select name="program_id"
+                id="test_program"
+                required>
+
+            <option value="">
+                Select Program
+            </option>
+
+            {% for program in programs %}
+
+                <option value="{{ program.Program_ID }}">
+                    {{ program.Program_Name }}
+                </option>
+
+            {% endfor %}
+
+        </select>
+
+        <br><br>
+
+
+        <!-- Semester -->
+
+        <label>Semester:</label>
+
+        <select name="semester_id"
+                id="test_semester"
+                required>
+
+            <option value="">
+                Select Program First
+            </option>
+
+        </select>
+
+        <br><br>
+
+
+        <!-- Subject -->
+
+        <label>Subject:</label>
+
+        <select name="subject_id"
+                id="test_subject"
+                required>
+
+            <option value="">
+                Select Semester First
+            </option>
+
+        </select>
+
+        <br><br>
+
+
+        <!-- Students -->
+
+        <div id="test_student_section">
+
+            <p>
+                Select Program, Semester and Subject
+                to load students.
+            </p>
+
+        </div>
+
+        <br>
+
+        <button type="submit">
+            Save Test Marks
+        </button>
+
+    </form>
+
+
+    <hr>
+
+
+    <h2>Test Records</h2>
+
+    {% if test_records %}
+
+    <table border="1">
+
+        <tr>
+
+            <th>Roll No</th>
+            <th>Student Name</th>
+            <th>Subject</th>
+            <th>Test No</th>
+            <th>Marks</th>
+
+        </tr>
+
+
+        {% for record in test_records %}
+
+        <tr>
+
+            <td>
+                {{ record.Roll_No }}
+            </td>
+
+            <td>
+                {{ record.Name }}
+            </td>
+
+            <td>
+                {{ record.Subject_Name }}
+            </td>
+
+            <td>
+                Test {{ record.Test_No }}
+            </td>
+
+            <td>
+                {{ record.Marks }}
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    {% else %}
+
+        <p>No test records available.</p>
+
+    {% endif %}
+
+
+    <script src="{{ url_for('static', filename='js/test.js') }}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Student Management</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/student_management.css') }}">
+
+</head>
+
+<body>
+
+    <h1>Student Management</h1>
+
+    <a href="{{ url_for('admin_dashboard') }}">
+        Back to Dashboard
+    </a>
+
+    <hr>
+
+    <h2>Add Student</h2>
+
+    <form method="POST"
+          action="{{ url_for('students') }}">
+
+        <!-- Roll No -->
+
+        <label>Roll No:</label>
+
+        <input type="text"
+               name="roll_no"
+               required>
+
+        <br><br>
+
+
+        <!-- Name -->
+
+        <label>Name:</label>
+
+        <input type="text"
+               name="name"
+               required>
+
+        <br><br>
+
+
+        <!-- Gender -->
+
+        <label>Gender:</label>
+
+        <select name="gender">
+
+            <option value="">
+                Select Gender
+            </option>
+
+            <option value="Male">
+                Male
+            </option>
+
+            <option value="Female">
+                Female
+            </option>
+
+        </select>
+
+        <br><br>
+
+
+        <!-- Department -->
+
+        <label>Department:</label>
+
+        <select name="department_id"
+                required>
+
+            <option value="">
+                Select Department
+            </option>
+
+            {% for department in departments %}
+
+            <option value="{{ department.Department_ID }}">
+
+                {{ department.Department_Name }}
+
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+        <br><br>
+
+
+        <!-- Program -->
+
+        <label>Program:</label>
+
+        <select name="program_id"
+                id="student_program"
+                required>
+
+            <option value="">
+                Select Program
+            </option>
+
+            {% for program in programs %}
+
+            <option value="{{ program.Program_ID }}">
+
+                {{ program.Program_Name }}
+
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+        <br><br>
+
+
+        <!-- Semester -->
+
+        <label>Semester:</label>
+
+        <select name="semester_id"
+                id="student_semester"
+                required>
+
+            <option value="">
+                Select Program First
+            </option>
+
+        </select>
+
+        <br><br>
+
+
+        <!-- Password -->
+
+        <label>Password:</label>
+
+        <input type="password"
+               name="password"
+               required>
+
+        <br><br>
+
+
+        <button type="submit">
+            Add Student
+        </button>
+
+    </form>
+
+
+    <hr>
+
+
+    <h2>Students</h2>
+
+    {% if students %}
+
+    <table border="1">
+
+        <tr>
+
+            <th>Student ID</th>
+            <th>Roll No</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Department</th>
+            <th>Program</th>
+            <th>Semester</th>
+
+        </tr>
+
+        {% for student in students %}
+
+        <tr>
+
+            <td>
+                {{ student.Student_ID }}
+            </td>
+
+            <td>
+                {{ student.Roll_No }}
+            </td>
+
+            <td>
+                {{ student.Name }}
+            </td>
+
+            <td>
+                {{ student.Gender }}
+            </td>
+
+            <td>
+                {{ student.Department_Name }}
+            </td>
+
+            <td>
+                {{ student.Program_Name }}
+            </td>
+
+            <td>
+                {{ student.Semester_Name }}
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    {% else %}
+
+    <p>No students available.</p>
+
+    {% endif %}
+
+
+    <script>
+
+        const programSelect =
+            document.getElementById("student_program");
+
+        const semesterSelect =
+            document.getElementById("student_semester");
+
+
+        programSelect.addEventListener("change", function () {
+
+            const programId = this.value;
+
+
+            semesterSelect.innerHTML =
+                '<option value="">Loading Semesters...</option>';
+
+
+            if (!programId) {
+
+                semesterSelect.innerHTML =
+                    '<option value="">Select Program First</option>';
+
+                return;
+
+            }
+
+
+            fetch(`/get_semesters/${programId}`)
+
+                .then(response => {
+
+                    if (!response.ok) {
+                        throw new Error(
+                            "Failed to load semesters"
+                        );
+                    }
+
+                    return response.json();
+
+                })
+
+                .then(data => {
+
+                    semesterSelect.innerHTML =
+                        '<option value="">Select Semester</option>';
+
+
+                    data.forEach(semester => {
+
+                        const option =
+                            document.createElement("option");
+
+                        option.value =
+                            semester.Semester_ID;
+
+                        option.textContent =
+                            semester.Semester_Name;
+
+                        semesterSelect.appendChild(option);
+
+                    });
+
+                })
+
+                .catch(error => {
+
+                    console.error(error);
+
+                    semesterSelect.innerHTML =
+                        '<option value="">Error loading semesters</option>';
+
+                });
+
+        });
+
+    </script>
+
+</body>
+
+</html>

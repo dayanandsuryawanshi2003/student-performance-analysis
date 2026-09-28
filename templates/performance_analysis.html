@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Performance Analysis</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <h1>Student Performance Analysis</h1>
+
+    <br>
+
+    {% if session.get("admin_id") %}
+
+        <a href="{{ url_for('admin_dashboard') }}">
+            Back to Admin Dashboard
+        </a>
+
+    {% elif session.get("teacher_id") %}
+
+        <a href="{{ url_for('teacher_dashboard') }}">
+            Back to Teacher Dashboard
+        </a>
+
+    {% endif %}
+
+    <hr>
+
+
+    {% for student in performance_data %}
+
+        <h2>
+            {{ student.Name }}
+            - {{ student.Roll_No }}
+        </h2>
+
+        <p>
+            <strong>Semester:</strong>
+            {{ student.Semester_Name }}
+        </p>
+
+        <p>
+            <strong>Overall Percentage:</strong>
+            {{ student.Overall_Percentage }}%
+        </p>
+
+        <p>
+            <strong>Grade:</strong>
+            {{ student.Grade }}
+        </p>
+
+        <p>
+            <strong>Strong Subject:</strong>
+            {{ student.Strong_Subject }}
+        </p>
+
+        <p>
+            <strong>Weak Subject:</strong>
+            {{ student.Weak_Subject }}
+        </p>
+
+        <p>
+            <strong>Performance Level:</strong>
+            {{ student.Performance_Level }}
+        </p>
+
+
+        <h3>Subject-wise Performance</h3>
+
+        <table border="1" cellpadding="8">
+
+            <tr>
+
+                <th>Subject</th>
+
+                <th>Attendance %</th>
+
+                <th>Assignment %</th>
+
+                <th>Test %</th>
+
+                <th>Performance %</th>
+
+                <th>Grade</th>
+
+                <th>Level</th>
+
+            </tr>
+
+
+            {% for subject in student.Subjects %}
+
+            <tr>
+
+                <td>
+                    {{ subject.Subject_Name }}
+                </td>
+
+                <td>
+                    {{ subject.Attendance_Percentage }}%
+                </td>
+
+                <td>
+                    {{ subject.Assignment_Percentage }}%
+                </td>
+
+                <td>
+                    {{ subject.Test_Percentage }}%
+                </td>
+
+                <td>
+                    {{ subject.Performance_Percentage }}%
+                </td>
+
+                <td>
+                    {{ subject.Grade }}
+                </td>
+
+                <td>
+                    {{ subject.Performance_Level }}
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        <br>
+        <hr>
+        <br>
+
+    {% endfor %}
+
+
+    {% if not performance_data %}
+
+        <p>
+            No performance data available yet.
+        </p>
+
+    {% endif %}
+
+</body>
+
+</html>

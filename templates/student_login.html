@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Login | Student Performance System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/student_login.css') }}">
+</head>
+
+<body>
+
+    <!-- Animated Background -->
+    <div class="background">
+        <div class="glow glow-one"></div>
+        <div class="glow glow-two"></div>
+        <div class="grid"></div>
+    </div>
+
+
+    <!-- Top Bar -->
+    <header class="topbar">
+
+        <div class="brand">
+            <span class="brand-icon">◆</span>
+            <span>Student Performance System</span>
+        </div>
+
+        <a href="{{ url_for('home') }}" class="back-home">
+            ← Back to Home
+        </a>
+
+    </header>
+
+
+    <!-- Main Content -->
+    <main class="login-page">
+
+        <!-- Introduction -->
+        <section class="intro">
+
+            <div class="security-tag">
+                <span class="status-dot"></span>
+                STUDENT ACCESS
+            </div>
+
+            <h1>
+                Student
+                <span>Portal</span>
+            </h1>
+
+            <p>
+                View your academic performance, attendance,
+                assessments and semester results through your
+                personalized student dashboard.
+            </p>
+
+
+            <div class="student-badge">
+
+                <div class="badge-icon">
+                    🎓
+                </div>
+
+                <div>
+                    <strong>STUDENT PORTAL</strong>
+                    <small>Academic Performance & Progress</small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Login Card -->
+        <section class="login-card">
+
+            <div class="card-top">
+
+                <div class="student-icon">
+                    🎓
+                </div>
+
+                <div>
+                    <span class="card-label">STUDENT MEMBER</span>
+                    <h2>Welcome Back</h2>
+                </div>
+
+            </div>
+
+
+            <p class="login-description">
+                Sign in to view your academic performance dashboard.
+            </p>
+
+
+            <form method="POST" class="login-form">
+
+                <!-- Roll Number -->
+                <div class="input-group">
+
+                    <label for="roll_no">
+                        Roll Number
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            ◉
+                        </span>
+
+                        <input
+                            type="text"
+                            id="roll_no"
+                            name="roll_no"
+                            placeholder="Enter your roll number"
+                            autocomplete="username"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Password -->
+                <div class="input-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            ●
+                        </span>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Login -->
+                <button type="submit" class="login-button">
+
+                    <span>
+                        Enter Student Portal
+                    </span>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </button>
+
+            </form>
+
+
+            <div class="card-footer">
+
+                <span class="footer-line"></span>
+
+                <span>
+                    Secure Student Access
+                </span>
+
+                <span class="footer-line"></span>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <span>●</span>
+        Student Performance System
+        <span>•</span>
+        Student Access
+
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Performance Report</title>
+    <link rel="stylesheet"
+      href="{{ url_for('static', filename='css/performance_report.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <a
+        href="{{ dashboard_url }}"
+        class="back-btn"
+    >
+        ← Back to Dashboard
+    </a>
+
+    <div class="header">
+
+        <h1>Performance Report</h1>
+
+        <p>
+            Student academic performance report
+        </p>
+
+    </div>
+
+
+    {% if report_data %}
+
+        {% for student in report_data %}
+
+        <div class="student-card">
+
+            <h2>
+                {{ student.Name }}
+            </h2>
+
+            <div class="student-info">
+
+                <div class="info-box">
+                    <strong>Roll No</strong>
+                    {{ student.Roll_No }}
+                </div>
+
+                <div class="info-box">
+                    <strong>Department</strong>
+                    {{ student.Department_Name }}
+                </div>
+
+                <div class="info-box">
+                    <strong>Program</strong>
+                    {{ student.Program_Name }}
+                </div>
+
+                <div class="info-box">
+                    <strong>Semester</strong>
+                    {{ student.Semester_Name }}
+                </div>
+
+            </div>
+
+
+            <div class="summary">
+
+                <div class="summary-box">
+
+                    <small>
+                        Overall Performance
+                    </small>
+
+                    <h3>
+                        {{ student.Overall_Percentage }}%
+                    </h3>
+
+                </div>
+
+                <div class="summary-box">
+
+                    <small>
+                        Grade
+                    </small>
+
+                    <h3>
+                        {{ student.Grade }}
+                    </h3>
+
+                </div>
+
+                <div class="summary-box">
+
+                    <small>
+                        Strong Subject
+                    </small>
+
+                    <h3>
+                        {{ student.Strong_Subject }}
+                    </h3>
+
+                </div>
+
+                <div class="summary-box">
+
+                    <small>
+                        Weak Subject
+                    </small>
+
+                    <h3>
+                        {{ student.Weak_Subject }}
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <h3>
+                Subject-wise Performance
+            </h3>
+
+
+            {% if student.Subjects %}
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Subject</th>
+
+                        <th>Type</th>
+
+                        <th>Attendance %</th>
+
+                        <th>Assignment %</th>
+
+                        <th>Test %</th>
+
+                        <th>Performance %</th>
+
+                        <th>Grade</th>
+
+                        <th>Level</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for subject in student.Subjects %}
+
+                    <tr>
+
+                        <td>
+                            {{ subject.Subject_Name }}
+                        </td>
+
+                        <td>
+                            {{ subject.Subject_Type }}
+                        </td>
+
+                        <td>
+                            {{ subject.Attendance_Percentage }}%
+                        </td>
+
+                        <td>
+                            {{ subject.Assignment_Percentage }}%
+                        </td>
+
+                        <td>
+                            {{ subject.Test_Percentage }}%
+                        </td>
+
+                        <td>
+                            <strong>
+                                {{ subject.Performance_Percentage }}%
+                            </strong>
+                        </td>
+
+                        <td>
+                            {{ subject.Grade }}
+                        </td>
+
+                        <td>
+                            {{ subject.Performance_Level }}
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+            {% else %}
+
+                <p>
+                    No subject performance data available.
+                </p>
+
+            {% endif %}
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="no-data">
+
+            <h2>
+                No Report Data Available
+            </h2>
+
+            <p>
+                Performance data is not available yet.
+            </p>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+
+</html>

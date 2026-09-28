@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Teacher Management</title>
+    <link rel="stylesheet"
+      href="{{ url_for('static', filename='css/teacher_management.css') }}">
+</head>
+
+<body>
+
+    <h1>Teacher Management</h1>
+
+    <a href="{{ url_for('admin_dashboard') }}">
+        Back to Admin Dashboard
+    </a>
+
+    <hr>
+
+    <h2>Add Teacher</h2>
+
+    <form method="POST">
+
+        <label>Username:</label>
+        <input type="text" name="username" required>
+
+        <br><br>
+
+        <label>Password:</label>
+        <input type="password" name="password" required>
+
+        <br><br>
+
+        <button type="submit">
+            Add Teacher
+        </button>
+
+    </form>
+
+    <hr>
+
+    <h2>Teachers</h2>
+
+    <table border="1" cellpadding="8">
+
+        <tr>
+            <th>Teacher ID</th>
+            <th>Username</th>
+        </tr>
+
+        {% for teacher in teachers %}
+
+        <tr>
+            <td>{{ teacher.Teacher_ID }}</td>
+            <td>{{ teacher.Username }}</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</body>
+
+</html>

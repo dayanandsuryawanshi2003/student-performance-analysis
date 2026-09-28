@@ -1,0 +1,263 @@
+/* =========================================================
+   PERFORMANCE ANALYSIS
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    padding: 40px 6%;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #f3f5ff;
+
+    background:
+        radial-gradient(circle at 15% 15%, rgba(100, 90, 255, 0.12), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(40, 150, 255, 0.12), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(90, 60, 200, 0.10), transparent 32%),
+        #080b18;
+
+    overflow-x: hidden;
+}
+
+/* Background grid */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+
+    background-size: 45px 45px;
+}
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+h1 {
+    margin-bottom: 16px;
+
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 750;
+    letter-spacing: -1px;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #8d9cff,
+        #62b8ff
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+body > a {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 9px 16px;
+
+    color: #8fb5ff;
+    text-decoration: none;
+
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    border: 1px solid rgba(100, 150, 255, 0.25);
+    border-radius: 9px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    transition: 0.25s ease;
+}
+
+body > a:hover {
+    color: #ffffff;
+    background: rgba(100, 150, 255, 0.10);
+    border-color: rgba(100, 150, 255, 0.5);
+    transform: translateX(-3px);
+}
+
+/* =========================================================
+   DIVIDERS
+   ========================================================= */
+
+hr {
+    border: 0;
+    height: 1px;
+    margin: 30px 0;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(100, 150, 255, 0.30),
+        rgba(120, 100, 255, 0.25),
+        transparent
+    );
+}
+
+/* =========================================================
+   STUDENT SUMMARY
+   ========================================================= */
+
+h2 {
+    margin-top: 25px;
+    margin-bottom: 15px;
+
+    color: #ffffff;
+    font-size: 1.45rem;
+    font-weight: 650;
+
+    padding-left: 14px;
+    border-left: 3px solid #6f8cff;
+}
+
+p {
+    margin-bottom: 9px;
+
+    color: #aeb7ca;
+    line-height: 1.65;
+}
+
+strong {
+    color: #e2e7f4;
+}
+
+/* =========================================================
+   SUBJECT-WISE HEADING
+   ========================================================= */
+
+h3 {
+    margin: 25px 0 14px;
+
+    color: #7fb8ff;
+    font-size: 1.15rem;
+    font-weight: 650;
+}
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+table {
+    width: 100%;
+    margin-top: 10px;
+
+    border-collapse: separate;
+    border-spacing: 0;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.025);
+}
+
+th {
+    padding: 14px 12px;
+
+    color: #ffffff;
+    font-size: 0.88rem;
+    font-weight: 650;
+
+    text-align: left;
+
+    background: rgba(90, 110, 220, 0.16);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+td {
+    padding: 13px 12px;
+
+    color: #b8c1d5;
+    font-size: 0.9rem;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr {
+    transition: background 0.2s ease;
+}
+
+tbody tr:hover {
+    background: rgba(100, 140, 255, 0.06);
+}
+
+td:first-child {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* =========================================================
+   EMPTY DATA
+   ========================================================= */
+
+body > p:last-child {
+    margin-top: 25px;
+    padding: 18px 20px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.025);
+}
+
+/* =========================================================
+   RESPONSIVE TABLE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    body {
+        padding: 30px 4%;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    th,
+    td {
+        padding: 11px 10px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 24px 18px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    body > a {
+        width: 100%;
+        justify-content: center;
+    }
+}

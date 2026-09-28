@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Teacher Login | Student Performance System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/teacher_login.css') }}">
+</head>
+
+<body>
+
+    <!-- Background Effects -->
+    <div class="bg-orb orb-one"></div>
+    <div class="bg-orb orb-two"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- Top Navigation -->
+    <header class="top-bar">
+
+        <div class="brand">
+            <span class="brand-icon">◆</span>
+            <span>Student Performance System</span>
+        </div>
+
+        <a href="{{ url_for('home') }}" class="back-home">
+            ← Back to Home
+        </a>
+
+    </header>
+
+
+    <!-- Main Content -->
+    <main class="page-container">
+
+        <!-- Portal Introduction -->
+        <section class="portal-intro">
+
+            <div class="access-label">
+                FACULTY ACCESS
+            </div>
+
+            <h1>
+                Faculty <span>Portal</span>
+            </h1>
+
+            <p class="intro-text">
+                Access student academic records, attendance,
+                assessments and performance information
+                from your faculty workspace.
+            </p>
+
+            <div class="faculty-badge">
+
+                <div class="teacher-icon">
+                    👨‍🏫
+                </div>
+
+                <div>
+                    <strong>TEACHER PORTAL</strong>
+                    <small>Academic & Performance Management</small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Login Card -->
+        <section class="login-card">
+
+            <div class="card-glow"></div>
+
+            <div class="card-header">
+
+                <div class="profile-icon">
+                    👨‍🏫
+                </div>
+
+                <div>
+                    <div class="faculty-member">
+                        FACULTY MEMBER
+                    </div>
+
+                    <h2>Welcome Back</h2>
+
+                    <p>
+                        Sign in to access your teaching
+                        and academic dashboard.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <form method="POST" class="login-form">
+
+                <div class="input-group">
+
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">◉</span>
+
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            placeholder="Enter faculty username"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">●</span>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter secure password"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <button type="submit" class="login-btn">
+
+                    <span>Enter Faculty Portal</span>
+
+                    <span class="arrow">→</span>
+
+                </button>
+
+            </form>
+
+
+            <div class="security-line">
+                <span class="status-dot"></span>
+                Authorized Faculty Access
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+        <span>●</span>
+        Student Performance System
+        <span class="separator">•</span>
+        Faculty Access
+    </footer>
+
+</body>
+
+</html>

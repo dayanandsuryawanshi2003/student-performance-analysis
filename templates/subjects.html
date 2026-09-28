@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Subject Management</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/subject_management.css') }}">
+</head>
+
+<body>
+
+    <h1>Subject Management</h1>
+
+    <a href="{{ url_for('admin_dashboard') }}">
+        Back to Dashboard
+    </a>
+
+    <hr>
+
+    <h2>Add Subject</h2>
+
+    <form method="POST"
+          action="{{ url_for('subjects') }}">
+
+        <!-- Subject Name -->
+        <label>Subject Name:</label>
+
+        <input type="text"
+               name="subject_name"
+               required>
+
+        <br><br>
+
+
+        <!-- Subject Type -->
+        <label>Subject Type:</label>
+
+        <select name="subject_type" required>
+
+            <option value="">
+                Select
+            </option>
+
+            <option value="Theory">
+                Theory
+            </option>
+
+            <option value="Practical">
+                Practical
+            </option>
+
+        </select>
+
+        <br><br>
+
+
+        <!-- Program -->
+        <label>Program:</label>
+
+        <select name="program_id"
+                id="subject_program_id"
+                required>
+
+            <option value="">
+                Select Program
+            </option>
+
+            {% for program in programs %}
+
+                <option value="{{ program.Program_ID }}">
+                    {{ program.Program_Name }}
+                </option>
+
+            {% endfor %}
+
+        </select>
+
+        <br><br>
+
+
+        <!-- Semester -->
+        <label>Semester:</label>
+
+        <select name="semester_id"
+                id="subject_semester_id"
+                required>
+
+            <option value="">
+                Select Program First
+            </option>
+
+        </select>
+
+        <br><br>
+
+
+        <button type="submit">
+            Add Subject
+        </button>
+
+    </form>
+
+    <hr>
+
+
+    <h2>Subjects</h2>
+
+    <table border="1">
+
+        <tr>
+            <th>ID</th>
+            <th>Subject Name</th>
+            <th>Type</th>
+            <th>Program</th>
+            <th>Semester</th>
+        </tr>
+
+        {% for subject in subjects %}
+
+        <tr>
+
+            <td>
+                {{ subject.Subject_ID }}
+            </td>
+
+            <td>
+                {{ subject.Subject_Name }}
+            </td>
+
+            <td>
+                {{ subject.Subject_Type }}
+            </td>
+
+            <td>
+                {{ subject.Program_Name }}
+            </td>
+
+            <td>
+                {{ subject.Semester_Name }}
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/subjects.js') }}"></script>
+
+</body>
+
+</html>

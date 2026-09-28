@@ -1,0 +1,277 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    padding: 40px 6%;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #f3f5ff;
+
+    background:
+        radial-gradient(circle at 15% 15%, rgba(90, 90, 255, 0.12), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(40, 150, 255, 0.12), transparent 30%),
+        #080b18;
+
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: auto;
+}
+
+/* Back button */
+
+.back-btn {
+    display: inline-flex;
+    padding: 10px 16px;
+    margin-bottom: 25px;
+
+    color: #8fb5ff;
+    text-decoration: none;
+    font-weight: 600;
+
+    border: 1px solid rgba(100, 150, 255, 0.25);
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.035);
+
+    transition: 0.25s ease;
+}
+
+.back-btn:hover {
+    color: #fff;
+    background: rgba(100, 150, 255, 0.10);
+    border-color: rgba(100, 150, 255, 0.5);
+    transform: translateX(-3px);
+}
+
+/* Header */
+
+.header {
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+
+    background: linear-gradient(
+        90deg,
+        #fff,
+        #8d9cff,
+        #62b8ff
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.header p {
+    margin-top: 8px;
+    color: #9fa9bd;
+}
+
+/* Student card */
+
+.student-card {
+    margin-bottom: 35px;
+    padding: 28px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, 0.035);
+    backdrop-filter: blur(12px);
+}
+
+.student-card > h2 {
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+/* Student information */
+
+.student-info {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+.info-box {
+    padding: 15px;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.025);
+    color: #b8c1d5;
+}
+
+.info-box strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #8fb5ff;
+    font-size: 0.85rem;
+}
+
+/* Summary */
+
+.summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 30px;
+}
+
+.summary-box {
+    padding: 18px;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(90, 110, 220, 0.12),
+        rgba(255, 255, 255, 0.025)
+    );
+
+    border: 1px solid rgba(110, 140, 255, 0.14);
+}
+
+.summary-box small {
+    display: block;
+    margin-bottom: 8px;
+
+    color: #9fa9bd;
+    font-size: 0.82rem;
+}
+
+.summary-box h3 {
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+/* Section heading */
+
+.student-card > h3 {
+    margin-bottom: 15px;
+    color: #8fb5ff;
+}
+
+/* Table */
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.02);
+}
+
+th {
+    padding: 14px 12px;
+
+    text-align: left;
+    white-space: nowrap;
+
+    color: #fff;
+    font-size: 0.85rem;
+
+    background: rgba(90, 110, 220, 0.16);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+td {
+    padding: 13px 12px;
+
+    color: #b9c2d5;
+    font-size: 0.88rem;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr {
+    transition: background 0.2s ease;
+}
+
+tbody tr:hover {
+    background: rgba(100, 140, 255, 0.06);
+}
+
+td:first-child {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* No data */
+
+.no-data {
+    padding: 30px;
+
+    text-align: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.no-data h2 {
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.no-data p {
+    color: #9fa9bd;
+}
+
+/* Responsive */
+
+@media (max-width: 1000px) {
+
+    .student-info,
+    .summary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 25px 16px;
+    }
+
+    .student-card {
+        padding: 20px;
+    }
+
+    .student-info,
+    .summary {
+        grid-template-columns: 1fr;
+    }
+
+    .back-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Assignment Management</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/assignments.css') }}">
+</head>
+
+<body>
+
+    <h1>Assignment Management</h1>
+
+    <a href="{{ url_for('teacher_dashboard') }}">
+        Back to Dashboard
+    </a>
+
+    <hr>
+
+    <h2>Enter Assignment Marks</h2>
+
+    <form method="POST" action="{{ url_for('assignments') }}">
+
+        <label>Program:</label>
+
+        <select name="program_id"
+                id="assignment_program"
+                required>
+
+            <option value="">
+                Select Program
+            </option>
+
+            {% for program in programs %}
+                <option value="{{ program.Program_ID }}">
+                    {{ program.Program_Name }}
+                </option>
+            {% endfor %}
+
+        </select>
+
+        <br><br>
+
+
+        <label>Semester:</label>
+
+        <select name="semester_id"
+                id="assignment_semester"
+                required>
+
+            <option value="">
+                Select Program First
+            </option>
+
+        </select>
+
+        <br><br>
+
+
+        <label>Subject:</label>
+
+        <select name="subject_id"
+                id="assignment_subject"
+                required>
+
+            <option value="">
+                Select Semester First
+            </option>
+
+        </select>
+
+        <br><br>
+
+
+        <div id="student_section">
+
+            <p>
+                Select Program, Semester and Subject
+                to load students.
+            </p>
+
+        </div>
+
+        <br>
+
+        <button type="submit">
+            Save Assignments
+        </button>
+
+    </form>
+
+
+    <hr>
+
+
+    <h2>Assignment Records</h2>
+
+    {% if assignment_records %}
+
+    <table border="1">
+
+        <tr>
+            <th>Roll No</th>
+            <th>Student Name</th>
+            <th>Subject</th>
+            <th>Assignment No</th>
+            <th>Marks</th>
+        </tr>
+
+        {% for record in assignment_records %}
+
+        <tr>
+
+            <td>{{ record.Roll_No }}</td>
+
+            <td>{{ record.Name }}</td>
+
+            <td>{{ record.Subject_Name }}</td>
+
+            <td>
+                Assignment {{ record.Assignment_No }}
+            </td>
+
+            <td>{{ record.Marks }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    {% else %}
+
+    <p>No assignment records available.</p>
+
+    {% endif %}
+
+
+    <script src="{{ url_for('static', filename='js/assignments.js') }}?v=2"></script>
+
+</body>
+
+</html>

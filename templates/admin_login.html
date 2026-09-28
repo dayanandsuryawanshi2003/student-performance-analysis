@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Login | Student Performance System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/admin_login.css') }}">
+</head>
+
+<body>
+
+    <!-- Animated Background -->
+    <div class="background">
+        <div class="glow glow-one"></div>
+        <div class="glow glow-two"></div>
+        <div class="grid"></div>
+    </div>
+
+    <!-- Top Navigation -->
+    <header class="topbar">
+
+        <div class="brand">
+            <span class="brand-icon">◆</span>
+            <span>Student Performance System</span>
+        </div>
+
+        <a href="{{ url_for('home') }}" class="back-home">
+            ← Back to Home
+        </a>
+
+    </header>
+
+
+    <!-- Main Content -->
+    <main class="login-page">
+
+        <!-- Left Information -->
+        <section class="intro">
+
+            <div class="security-tag">
+                <span class="status-dot"></span>
+                AUTHORIZED ACCESS ONLY
+            </div>
+
+            <h1>
+                System
+                <span>Control</span>
+            </h1>
+
+            <p>
+                Manage academic data, users, performance records
+                and system operations from one secure control panel.
+            </p>
+
+            <div class="admin-badge">
+                <div class="badge-icon">⚙</div>
+
+                <div>
+                    <strong>ADMIN PORTAL</strong>
+                    <small>Secure Administrative Access</small>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Login Card -->
+        <section class="login-card">
+
+            <div class="card-top">
+                <div class="lock-icon">🔐</div>
+
+                <div>
+                    <span class="card-label">ADMINISTRATOR</span>
+                    <h2>Welcome Back</h2>
+                </div>
+            </div>
+
+            <p class="login-description">
+                Sign in to continue to the administration panel.
+            </p>
+
+
+            <form method="POST" class="login-form">
+
+                <div class="input-group">
+                    <label for="username">Username</label>
+
+                    <div class="input-wrapper">
+                        <span class="input-icon">◉</span>
+
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            placeholder="Enter administrator username"
+                            autocomplete="username"
+                            required>
+                    </div>
+                </div>
+
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+
+                    <div class="input-wrapper">
+                        <span class="input-icon">●</span>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter secure password"
+                            autocomplete="current-password"
+                            required>
+                    </div>
+                </div>
+
+
+                <button type="submit" class="login-button">
+
+                    <span>Access Control Panel</span>
+
+                    <span class="arrow">→</span>
+
+                </button>
+
+            </form>
+
+
+            <div class="card-footer">
+                <span class="footer-line"></span>
+                <span>Protected System Access</span>
+                <span class="footer-line"></span>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Bottom -->
+    <footer>
+        <span>●</span>
+        Student Performance System
+        <span>•</span>
+        Administrator Access
+    </footer>
+
+</body>
+</html>

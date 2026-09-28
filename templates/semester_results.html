@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Semester Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <h1>Semester Result & Performance Summary</h1>
+
+    <br>
+
+    <a href="{{ url_for('student_dashboard') }}">
+        Back to Student Dashboard
+    </a>
+
+    <hr>
+
+
+    <!-- =====================================================
+         STUDENT INFORMATION
+         ===================================================== -->
+
+    {% if student %}
+
+        <h2>
+            {{ student.Name }}
+            - {{ student.Roll_No }}
+        </h2>
+
+    {% endif %}
+
+
+    <!-- =====================================================
+         PERFORMANCE SUMMARY
+         ===================================================== -->
+
+    {% if summary %}
+
+        <h2>Performance Summary</h2>
+
+        <p>
+            <strong>Total Semesters:</strong>
+            {{ summary.Total_Semesters }}
+        </p>
+
+        <p>
+            <strong>Average Percentage:</strong>
+            {{ summary.Average_Percentage }}%
+        </p>
+
+        <p>
+            <strong>Highest Percentage:</strong>
+            {{ summary.Highest_Percentage }}%
+        </p>
+
+        <p>
+            <strong>Lowest Percentage:</strong>
+            {{ summary.Lowest_Percentage }}%
+        </p>
+
+        <p>
+            <strong>Passed Semesters:</strong>
+            {{ summary.Passed_Semesters }}
+        </p>
+
+        <p>
+            <strong>Failed Semesters:</strong>
+            {{ summary.Failed_Semesters }}
+        </p>
+
+        <hr>
+
+    {% endif %}
+
+
+    <!-- =====================================================
+         SEMESTER-WISE RESULT
+         ===================================================== -->
+
+    <h2>Semester-wise Result</h2>
+
+    {% if semester_results %}
+
+        <table border="1" cellpadding="10">
+
+            <thead>
+
+                <tr>
+
+                    <th>Semester</th>
+
+                    <th>Total Marks</th>
+
+                    <th>Percentage</th>
+
+                    <th>Grade</th>
+
+                    <th>Result Status</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for result in semester_results %}
+
+                    <tr>
+
+                        <td>
+                            {{ result.Semester_ID }}
+                        </td>
+
+                        <td>
+                            {{ result.Total_Marks }}
+                        </td>
+
+                        <td>
+                            {{ result.Percentage }}%
+                        </td>
+
+                        <td>
+                            {{ result.Grade }}
+                        </td>
+
+                        <td>
+                            {{ result.Result_Status }}
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    {% else %}
+
+        <p>
+            No semester result data available yet.
+        </p>
+
+    {% endif %}
+
+</body>
+
+</html>

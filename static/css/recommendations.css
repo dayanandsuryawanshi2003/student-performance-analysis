@@ -1,0 +1,339 @@
+/* =========================================================
+   MY RECOMMENDATIONS
+   Student / Teacher / Admin Theme
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    padding: 40px 6%;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #f3f5ff;
+
+    background:
+        radial-gradient(circle at 15% 15%, rgba(255, 100, 130, 0.10), transparent 28%),
+        radial-gradient(circle at 85% 15%, rgba(50, 120, 255, 0.14), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(80, 60, 200, 0.12), transparent 32%),
+        #080b18;
+
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Background grid */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+
+    background-size: 45px 45px;
+}
+
+/* =========================================================
+   MAIN TITLE
+   ========================================================= */
+
+h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 750;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #ff8ca0,
+        #65a8ff
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+body > a {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 9px 15px;
+
+    color: #ff9aac;
+    text-decoration: none;
+
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    border: 1px solid rgba(255, 140, 160, 0.25);
+    border-radius: 9px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+body > a:hover {
+    color: #ffffff;
+
+    background: rgba(255, 140, 160, 0.10);
+
+    border-color: rgba(255, 140, 160, 0.5);
+
+    transform: translateX(-3px);
+}
+
+/* =========================================================
+   DIVIDERS
+   ========================================================= */
+
+hr {
+    border: 0;
+    height: 1px;
+    margin: 30px 0;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 140, 160, 0.25),
+        rgba(101, 168, 255, 0.25),
+        transparent
+    );
+}
+
+/* =========================================================
+   STUDENT SUMMARY
+   ========================================================= */
+
+h2 {
+    color: #ffffff;
+    font-size: 1.45rem;
+    font-weight: 650;
+
+    margin-bottom: 14px;
+}
+
+body > p,
+body > p:last-child {
+    color: #a7afc1;
+    line-height: 1.7;
+}
+
+strong {
+    color: #dce2f0;
+}
+
+/* =========================================================
+   SECTION HEADINGS
+   ========================================================= */
+
+h2:not(:first-of-type) {
+    margin-top: 10px;
+}
+
+h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+    color: #ff9aac;
+
+    font-size: 1.08rem;
+    font-weight: 650;
+}
+
+/* =========================================================
+   CONTENT PARAGRAPHS
+   ========================================================= */
+
+body > p,
+body h2 ~ p,
+body h3 ~ p {
+    max-width: 900px;
+
+    color: #a7afc1;
+
+    line-height: 1.7;
+}
+
+body h2 ~ p strong,
+body h3 ~ p strong {
+    color: #dce2f0;
+}
+
+/* =========================================================
+   PERFORMANCE / CAREER SECTIONS
+   ========================================================= */
+
+/*
+   The page currently has no wrapper divs around sections,
+   so these selectors create visual separation without
+   changing the HTML/backend.
+*/
+
+body h2 + p {
+    margin-bottom: 10px;
+}
+
+/* Performance Analysis */
+
+body h2:nth-of-type(2) {
+    padding-left: 14px;
+
+    border-left: 3px solid #65a8ff;
+}
+
+/* Career Recommendation */
+
+body h2:nth-of-type(3) {
+    padding-left: 14px;
+
+    border-left: 3px solid #ff8ca0;
+}
+
+/* Other Career Domains */
+
+body h2:nth-of-type(4) {
+    padding-left: 14px;
+
+    border-left: 3px solid #8c7cff;
+}
+
+/* =========================================================
+   CAREER SUITABILITY
+   ========================================================= */
+
+body h3 + p strong {
+    color: #ff9aac;
+}
+
+/* =========================================================
+   LISTS
+   ========================================================= */
+
+ul {
+    max-width: 850px;
+
+    margin: 12px 0 20px;
+    padding: 0;
+
+    list-style: none;
+}
+
+li {
+    position: relative;
+
+    margin-bottom: 9px;
+    padding: 12px 15px 12px 38px;
+
+    color: #b9c2d8;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 9px;
+
+    background: rgba(255, 255, 255, 0.025);
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+li::before {
+    content: "◆";
+
+    position: absolute;
+    left: 15px;
+    top: 12px;
+
+    color: #ff8ca0;
+    font-size: 0.65rem;
+}
+
+li:hover {
+    background: rgba(255, 140, 160, 0.045);
+    border-color: rgba(255, 140, 160, 0.18);
+    transform: translateX(3px);
+}
+
+li strong {
+    color: #ffffff;
+}
+
+/* =========================================================
+   NO DATA STATE
+   ========================================================= */
+
+body > p:last-child {
+    padding: 18px 20px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.025);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 30px 4%;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    ul {
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+
+    body {
+        padding: 24px 18px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    body > a {
+        width: 100%;
+        justify-content: center;
+    }
+
+    li {
+        padding-left: 34px;
+    }
+}

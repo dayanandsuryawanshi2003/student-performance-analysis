@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/admin_dashboard.css') }}">
+</head>
+
+<body>
+
+    <div class="background">
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+        <div class="grid"></div>
+    </div>
+
+
+    <header class="topbar">
+
+        <div class="brand">
+            <span class="brand-mark">◆</span>
+            <span>Student Performance System</span>
+        </div>
+
+        <a href="{{ url_for('admin_logout') }}" class="logout-btn">
+            Logout
+        </a>
+
+    </header>
+
+
+    <main class="dashboard">
+
+        <section class="welcome-section">
+
+            <div class="access-tag">
+                <span class="pulse-dot"></span>
+                SYSTEM ADMINISTRATION
+            </div>
+
+            <h1>
+                Admin
+                <span>Dashboard</span>
+            </h1>
+
+            <h2>
+                Welcome, {{ username }}
+            </h2>
+
+            <p class="description">
+                Manage students, subjects, teachers, academic results
+                and system-wide performance analysis from one central workspace.
+            </p>
+
+        </section>
+
+
+        <section class="management-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-label">
+                        ADMIN CONTROL CENTER
+                    </span>
+
+                    <h2>System Management</h2>
+                </div>
+
+                <span class="section-number">
+                    05 MODULES
+                </span>
+
+            </div>
+
+
+            <div class="cards-grid">
+
+                <a href="{{ url_for('students') }}" class="dashboard-card">
+                    <div class="card-number">01</div>
+                    <div class="card-icon">👥</div>
+                    <div class="card-content">
+                        <h3>Students Management</h3>
+                        <p>Manage student records and academic details.</p>
+                    </div>
+                    <span class="card-arrow">→</span>
+                </a>
+
+
+                <a href="{{ url_for('subjects') }}" class="dashboard-card">
+                    <div class="card-number">02</div>
+                    <div class="card-icon">📚</div>
+                    <div class="card-content">
+                        <h3>Subjects Management</h3>
+                        <p>Manage subjects and academic structure.</p>
+                    </div>
+                    <span class="card-arrow">→</span>
+                </a>
+
+
+                <a href="{{ url_for('teachers') }}" class="dashboard-card">
+                    <div class="card-number">03</div>
+                    <div class="card-icon">👨‍🏫</div>
+                    <div class="card-content">
+                        <h3>Teacher Management</h3>
+                        <p>Manage faculty records and access.</p>
+                    </div>
+                    <span class="card-arrow">→</span>
+                </a>
+
+
+                <!-- <a href="{{ url_for('attendance_report') }}" class="dashboard-card">
+                    <div class="card-number">04</div>
+                    <div class="card-icon">📊</div>
+                    <div class="card-content">
+                        <h3>Attendance Report</h3>
+                        <p>View system-wide attendance information.</p>
+                    </div>
+                    <span class="card-arrow">→</span>
+                </a> -->
+
+
+               
+
+                <a href="{{ url_for('admin_performance_analysis') }}"
+                   class="dashboard-card">
+
+                    <div class="card-number">04</div>
+
+                    <div class="card-icon">📈</div>
+
+                    <div class="card-content">
+                        <h3>Performance Reports</h3>
+                        <p>Analyze overall academic performance.</p>
+                    </div>
+
+                    <span class="card-arrow">→</span>
+
+                </a>
+
+                <a href="{{ url_for('open_admin_powerbi') }}"
+                    class="dashboard-card">
+
+                    <div class="card-number">05</div>
+
+                    <div class="card-icon">📊</div>
+
+                    <div class="card-content">
+                    <h3>Overall Performance Dashboard</h3>
+                    <p>View interactive overall performance analysis.</p>
+                    </div>
+
+                    <span class="card-arrow">→</span>
+
+                </a>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        Student Performance System
+        <span>•</span>
+        System Administration
+    </footer>
+
+</body>
+</html>

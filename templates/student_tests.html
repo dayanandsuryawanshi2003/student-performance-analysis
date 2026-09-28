@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Test Marks</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/test_student.css') }}">
+</head>
+
+<body>
+
+    <h1>My Test Marks</h1>
+
+    <a href="{{ url_for('student_dashboard') }}">
+        Back to Dashboard
+    </a>
+
+    <hr>
+
+    {% if test_data %}
+
+    <table border="1" cellpadding="8">
+
+        <tr>
+            <th>Subject</th>
+            <th>Type</th>
+            <th>Test No</th>
+            <th>Marks</th>
+        </tr>
+
+        {% for row in test_data %}
+
+        <tr>
+            <td>{{ row.Subject_Name }}</td>
+            <td>{{ row.Subject_Type }}</td>
+            <td>{{ row.Test_No }}</td>
+            <td>{{ row.Marks }}</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    {% else %}
+
+        <h3>No test marks available.</h3>
+
+    {% endif %}
+
+</body>
+
+</html>

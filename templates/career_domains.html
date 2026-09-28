@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Career Guidance</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/career_guidance.css') }}">
+
+</head>
+
+<body>
+
+    <h1>Career Guidance</h1>
+
+    <a href="{{ url_for('student_dashboard') }}">
+        Back to Student Dashboard
+    </a>
+
+    <hr>
+
+
+    <!-- =====================================================
+         STUDENT'S RECOMMENDED CAREER DOMAINS
+         ===================================================== -->
+
+    {% if recommendation_data %}
+
+        <h2>Your Recommended Career Domains</h2>
+
+        <p>
+            These career domains are suggested based on
+            your performance in relevant subjects.
+        </p>
+
+        {% for recommendation in recommendation_data %}
+
+            <div>
+
+                <h3>
+                    {{ recommendation.Domain_Name }}
+                </h3>
+
+                <p>
+                    <strong>Suitability:</strong>
+                    {{ recommendation.Suitability_Score }}%
+                </p>
+
+            </div>
+
+        {% endfor %}
+
+        <p>
+
+            <a href="{{ url_for('recommendations') }}">
+                View Detailed Recommendations
+            </a>
+
+        </p>
+
+        <hr>
+
+    {% endif %}
+
+
+    <!-- =====================================================
+         ALL CAREER DOMAINS
+         ===================================================== -->
+
+    <h2>Explore Career Domains</h2>
+
+    <p>
+        You can explore other career domains and learn
+        about the required skills, tools, certifications
+        and projects.
+    </p>
+
+
+    {% if career_domains %}
+
+        {% for domain in career_domains %}
+
+            <h2>
+                {{ domain.Domain_Name }}
+            </h2>
+
+            <p>
+                <strong>Languages:</strong>
+                {{ domain.Languages }}
+            </p>
+
+            <p>
+                <strong>Tools:</strong>
+                {{ domain.Tools }}
+            </p>
+
+            <p>
+                <strong>Certifications:</strong>
+                {{ domain.Certifications }}
+            </p>
+
+            <p>
+                <strong>Projects:</strong>
+                {{ domain.Projects }}
+            </p>
+
+            <hr>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>
+            No career domain information available.
+        </p>
+
+    {% endif %}
+
+</body>
+
+</html>

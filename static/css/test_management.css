@@ -1,0 +1,227 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    padding: 40px 6%;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #f3f5ff;
+
+    background:
+        radial-gradient(circle at 15% 15%, rgba(255,90,130,0.10), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(60,120,255,0.14), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(100,70,220,0.10), transparent 32%),
+        #080b18;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+
+    background-size: 45px 45px;
+}
+
+h1 {
+    margin-bottom: 18px;
+    font-size: clamp(2rem, 4vw, 3rem);
+
+    background: linear-gradient(90deg, #ffffff, #ff8ca0, #6ba8ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+h2 {
+    margin: 28px 0 18px;
+    color: #ffffff;
+}
+
+body > a {
+    display: inline-flex;
+    padding: 9px 16px;
+
+    color: #ff9aaa;
+    text-decoration: none;
+    font-weight: 600;
+
+    border: 1px solid rgba(255,140,160,0.25);
+    border-radius: 9px;
+    background: rgba(255,255,255,0.035);
+
+    transition: 0.25s ease;
+}
+
+body > a:hover {
+    color: #ffffff;
+    background: rgba(255,140,160,0.10);
+    transform: translateX(-3px);
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    margin: 30px 0;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,140,160,0.30),
+        rgba(100,150,255,0.25),
+        transparent
+    );
+}
+
+form {
+    max-width: 700px;
+    padding: 25px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+
+    background: rgba(255,255,255,0.035);
+}
+
+label {
+    display: inline-block;
+    min-width: 100px;
+    margin-bottom: 8px;
+
+    color: #dce2f2;
+    font-weight: 600;
+}
+
+select {
+    width: 260px;
+    padding: 11px 13px;
+
+    color: #ffffff;
+
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    outline: none;
+
+    background: rgba(10,14,30,0.85);
+
+    transition: 0.2s ease;
+}
+
+select:focus {
+    border-color: rgba(120,160,255,0.65);
+    box-shadow: 0 0 0 3px rgba(100,140,255,0.10);
+}
+
+select option {
+    background: #111629;
+    color: #ffffff;
+}
+
+button {
+    margin-top: 10px;
+    padding: 11px 22px;
+
+    color: #ffffff;
+    font-weight: 650;
+
+    border: 0;
+    border-radius: 8px;
+
+    background: linear-gradient(135deg, #536dfe, #7c4dff);
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+#test_student_section {
+    margin-top: 20px;
+    padding: 18px;
+
+    color: #b9c2d5;
+
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+
+    background: rgba(255,255,255,0.025);
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    overflow: hidden;
+
+    background: rgba(255,255,255,0.025);
+}
+
+th {
+    padding: 14px;
+    text-align: left;
+    white-space: nowrap;
+
+    color: #ffffff;
+
+    background: rgba(90,110,220,0.16);
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+
+td {
+    padding: 13px 14px;
+    color: #b9c2d5;
+
+    border-bottom: 1px solid rgba(255,255,255,0.055);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background: rgba(100,140,255,0.06);
+}
+
+td:first-child {
+    color: #8fb5ff;
+    font-weight: 650;
+}
+
+td:last-child {
+    color: #ffb37c;
+    font-weight: 700;
+}
+
+@media (max-width: 800px) {
+    body {
+        padding: 30px 4%;
+    }
+
+    select {
+        width: 100%;
+        margin-bottom: 12px;
+    }
+
+    label {
+        display: block;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}

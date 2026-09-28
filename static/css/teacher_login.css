@@ -1,0 +1,895 @@
+/* =====================================================
+   TEACHER LOGIN
+   Student Performance System
+   ===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #f5f7ff;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(54, 91, 180, 0.28),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(0, 180, 170, 0.16),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #070b19 0%,
+            #0a1024 45%,
+            #07151d 100%
+        );
+
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+
+/* =====================================================
+   BACKGROUND
+   ===================================================== */
+
+.grid-overlay {
+    position: fixed;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 55px 55px;
+
+    mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 90%
+    );
+
+    pointer-events: none;
+}
+
+.bg-orb {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(1px);
+    animation: floatOrb 10s ease-in-out infinite;
+}
+
+.orb-one {
+    width: 420px;
+    height: 420px;
+
+    top: -190px;
+    right: -100px;
+
+    border: 1px solid rgba(76, 150, 255, 0.15);
+
+    box-shadow:
+        0 0 80px rgba(55, 120, 255, 0.08);
+}
+
+.orb-two {
+    width: 330px;
+    height: 330px;
+
+    bottom: -180px;
+    left: -120px;
+
+    border: 1px solid rgba(0, 210, 190, 0.12);
+
+    box-shadow:
+        0 0 70px rgba(0, 210, 190, 0.06);
+
+    animation-delay: -4s;
+}
+
+@keyframes floatOrb {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(18px, -15px);
+    }
+}
+
+
+/* =====================================================
+   TOP BAR
+   ===================================================== */
+
+.top-bar {
+    width: 100%;
+
+    min-height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+
+    background: rgba(5, 10, 25, 0.72);
+
+    backdrop-filter: blur(16px);
+
+    position: relative;
+    z-index: 10;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    letter-spacing: 0.2px;
+}
+
+.brand-icon {
+    font-size: 13px;
+    color: #62b7ff;
+
+    text-shadow:
+        0 0 12px rgba(98,183,255,0.8);
+}
+
+.back-home {
+    color: #b8c9e8;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    padding: 9px 15px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+
+    transition: 0.3s ease;
+}
+
+.back-home:hover {
+    color: #ffffff;
+
+    border-color: rgba(98,183,255,0.45);
+
+    background: rgba(98,183,255,0.08);
+
+    transform: translateX(-3px);
+}
+
+
+/* =====================================================
+   MAIN
+   ===================================================== */
+
+.page-container {
+    width: min(1180px, 90%);
+
+    margin: 0 auto;
+
+    min-height: calc(100vh - 120px);
+
+    display: grid;
+
+    grid-template-columns: 1fr 470px;
+
+    align-items: center;
+
+    gap: 80px;
+
+    position: relative;
+    z-index: 2;
+
+    padding: 55px 0 45px;
+}
+
+
+/* =====================================================
+   LEFT INTRO
+   ===================================================== */
+
+.portal-intro {
+    animation: slideLeft 0.8s ease both;
+}
+
+@keyframes slideLeft {
+
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.access-label {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 8px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    color: #72bfff;
+
+    margin-bottom: 18px;
+}
+
+.access-label::before {
+    content: "";
+
+    width: 28px;
+    height: 2px;
+
+    background: #5bb5ff;
+
+    box-shadow:
+        0 0 10px rgba(91,181,255,0.8);
+}
+
+.portal-intro h1 {
+    font-size: clamp(48px, 6vw, 78px);
+
+    line-height: 0.98;
+
+    letter-spacing: -3px;
+
+    font-weight: 800;
+
+    margin-bottom: 25px;
+}
+
+.portal-intro h1 span {
+    display: block;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #6dbdff,
+            #6ee7d8
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+.intro-text {
+    max-width: 610px;
+
+    color: #aab8d0;
+
+    font-size: 17px;
+    line-height: 1.75;
+
+    margin-bottom: 35px;
+}
+
+
+/* =====================================================
+   FACULTY BADGE
+   ===================================================== */
+
+.faculty-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 15px 20px;
+
+    border-radius: 16px;
+
+    background: rgba(255,255,255,0.035);
+
+    border: 1px solid rgba(255,255,255,0.09);
+
+    backdrop-filter: blur(15px);
+
+    transition: 0.35s ease;
+}
+
+.faculty-badge:hover {
+    transform: translateY(-4px);
+
+    border-color: rgba(98,183,255,0.35);
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,0.25);
+}
+
+.teacher-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(71,141,255,0.22),
+            rgba(0,195,180,0.14)
+        );
+
+    font-size: 23px;
+}
+
+.faculty-badge strong {
+    display: block;
+
+    font-size: 13px;
+
+    letter-spacing: 1.3px;
+
+    margin-bottom: 4px;
+}
+
+.faculty-badge small {
+    color: #8f9db7;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   LOGIN CARD
+   ===================================================== */
+
+.login-card {
+    position: relative;
+
+    padding: 38px;
+
+    border-radius: 26px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(19, 28, 53, 0.88),
+            rgba(9, 15, 31, 0.92)
+        );
+
+    border: 1px solid rgba(124,166,230,0.18);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.42),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+
+    backdrop-filter: blur(22px);
+
+    overflow: hidden;
+
+    animation: cardEnter 0.85s ease 0.15s both;
+}
+
+@keyframes cardEnter {
+
+    from {
+        opacity: 0;
+        transform: translateY(35px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.card-glow {
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    top: -130px;
+    right: -100px;
+
+    border-radius: 50%;
+
+    background: rgba(66,145,255,0.16);
+
+    filter: blur(35px);
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   CARD HEADER
+   ===================================================== */
+
+.card-header {
+    display: flex;
+
+    gap: 17px;
+
+    align-items: flex-start;
+
+    margin-bottom: 34px;
+}
+
+.profile-icon {
+    flex-shrink: 0;
+
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(74,139,255,0.25),
+            rgba(34,207,186,0.15)
+        );
+
+    border: 1px solid rgba(108,175,255,0.2);
+
+    font-size: 25px;
+
+    box-shadow:
+        0 8px 25px rgba(42,113,218,0.14);
+}
+
+.faculty-member {
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: #6fbfff;
+
+    font-weight: 700;
+
+    margin-bottom: 7px;
+}
+
+.card-header h2 {
+    font-size: 27px;
+
+    letter-spacing: -0.5px;
+
+    margin-bottom: 5px;
+}
+
+.card-header p {
+    color: #8998b4;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   FORM
+   ===================================================== */
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 22px;
+}
+
+.input-group label {
+    display: block;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #c6d1e5;
+
+    margin-bottom: 9px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+
+    left: 17px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #6e9ed5;
+
+    font-size: 14px;
+
+    z-index: 2;
+}
+
+.input-wrapper input {
+    width: 100%;
+
+    height: 58px;
+
+    padding: 0 17px 0 47px;
+
+    border-radius: 13px;
+
+    outline: none;
+
+    border: 1px solid rgba(135,158,200,0.18);
+
+    background: rgba(255,255,255,0.045);
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    transition: 0.3s ease;
+}
+
+.input-wrapper input::placeholder {
+    color: #68758f;
+}
+
+.input-wrapper input:hover {
+    border-color: rgba(111,185,255,0.28);
+}
+
+.input-wrapper input:focus {
+    border-color: #5eaeff;
+
+    background: rgba(76,142,230,0.07);
+
+    box-shadow:
+        0 0 0 4px rgba(80,157,255,0.08),
+        0 0 25px rgba(66,145,255,0.08);
+}
+
+
+/* =====================================================
+   BUTTON
+   ===================================================== */
+
+.login-btn {
+    width: 100%;
+
+    height: 60px;
+
+    margin-top: 4px;
+
+    border: none;
+    border-radius: 14px;
+
+    cursor: pointer;
+
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    background:
+        linear-gradient(
+            100deg,
+            #3977df,
+            #4c9eea,
+            #35b9a9
+        );
+
+    background-size: 200% 100%;
+
+    box-shadow:
+        0 12px 30px rgba(43,125,222,0.22);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background-position 0.5s ease;
+}
+
+.login-btn:hover {
+    transform: translateY(-3px);
+
+    background-position: 100% 0;
+
+    box-shadow:
+        0 16px 38px rgba(43,150,222,0.32);
+}
+
+.login-btn:active {
+    transform: translateY(0);
+}
+
+.arrow {
+    font-size: 19px;
+
+    transition: transform 0.3s ease;
+}
+
+.login-btn:hover .arrow {
+    transform: translateX(6px);
+}
+
+
+/* =====================================================
+   SECURITY
+   ===================================================== */
+
+.security-line {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 23px;
+
+    color: #71819d;
+
+    font-size: 11px;
+
+    letter-spacing: 0.4px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #48d7b1;
+
+    box-shadow:
+        0 0 10px rgba(72,215,177,0.8);
+
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.45;
+        transform: scale(0.75);
+    }
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+footer {
+    position: relative;
+
+    z-index: 3;
+
+    text-align: center;
+
+    padding: 0 20px 24px;
+
+    color: #596780;
+
+    font-size: 11px;
+
+    letter-spacing: 0.5px;
+}
+
+footer > span:first-child {
+    color: #53b7ff;
+
+    font-size: 8px;
+
+    margin-right: 5px;
+}
+
+.separator {
+    margin: 0 7px;
+
+    color: #344158;
+}
+
+
+/* =====================================================
+   RESPONSIVE — TABLET
+   ===================================================== */
+
+@media (max-width: 950px) {
+
+    .page-container {
+        grid-template-columns: 1fr;
+
+        max-width: 650px;
+
+        gap: 45px;
+
+        padding-top: 50px;
+    }
+
+    .portal-intro {
+        text-align: center;
+    }
+
+    .access-label {
+        justify-content: center;
+    }
+
+    .intro-text {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .faculty-badge {
+        text-align: left;
+    }
+
+}
+
+
+/* =====================================================
+   RESPONSIVE — MOBILE
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+    .top-bar {
+        padding: 0 5%;
+
+        min-height: 58px;
+    }
+
+    .brand {
+        font-size: 13px;
+    }
+
+    .back-home {
+        font-size: 12px;
+
+        padding: 8px 10px;
+    }
+
+    .page-container {
+        width: 90%;
+
+        padding: 38px 0 30px;
+
+        gap: 35px;
+    }
+
+    .portal-intro h1 {
+        font-size: 48px;
+
+        letter-spacing: -2px;
+    }
+
+    .intro-text {
+        font-size: 14px;
+
+        line-height: 1.65;
+    }
+
+    .faculty-badge {
+        width: 100%;
+
+        padding: 13px;
+    }
+
+    .login-card {
+        padding: 27px 21px;
+
+        border-radius: 21px;
+    }
+
+    .card-header {
+        margin-bottom: 28px;
+    }
+
+    .profile-icon {
+        width: 50px;
+        height: 50px;
+
+        font-size: 21px;
+    }
+
+    .card-header h2 {
+        font-size: 23px;
+    }
+
+    .input-wrapper input {
+        height: 55px;
+
+        font-size: 15px;
+    }
+
+    .login-btn {
+        height: 57px;
+    }
+
+    footer {
+        padding-bottom: 18px;
+    }
+}
+
+
+/* =====================================================
+   VERY SMALL MOBILE
+   ===================================================== */
+
+@media (max-width: 390px) {
+
+    .brand {
+        font-size: 12px;
+    }
+
+    .back-home {
+        font-size: 11px;
+    }
+
+    .portal-intro h1 {
+        font-size: 42px;
+    }
+
+    .login-card {
+        padding: 23px 17px;
+    }
+
+}

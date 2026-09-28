@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Teacher Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/teacher_dashboard.css') }}">
+</head>
+
+<body>
+
+    <div class="background">
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+        <div class="grid"></div>
+    </div>
+
+
+    <!-- Header -->
+    <header class="topbar">
+
+        <div class="brand">
+            <span class="brand-mark">◆</span>
+            <span>Student Performance System</span>
+        </div>
+
+        <a href="{{ url_for('teacher_logout') }}" class="logout-btn">
+            Logout
+        </a>
+
+    </header>
+
+
+    <!-- Main -->
+    <main class="dashboard">
+
+        <!-- Welcome -->
+        <section class="welcome-section">
+
+            <div class="access-tag">
+                <span class="pulse-dot"></span>
+                FACULTY DASHBOARD
+            </div>
+
+            <h1>
+                Teacher
+                <span>Dashboard</span>
+            </h1>
+
+            <p class="welcome-text">
+                Welcome, {{ username }}
+            </p>
+
+            <p class="description">
+                Manage academic data, monitor student performance
+                and access analytical insights from one place.
+            </p>
+
+        </section>
+
+
+        <!-- Management Section -->
+        <section class="management-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-label">
+                        FACULTY WORKSPACE
+                    </span>
+
+                    <h2>Manage Academic Data</h2>
+                </div>
+
+                <span class="section-number">
+                    04 MODULES
+                </span>
+
+            </div>
+
+
+            <div class="cards-grid">
+
+                <!-- Attendance -->
+                <a href="{{ url_for('attendance') }}" class="dashboard-card">
+
+                    <div class="card-number">01</div>
+
+                    <div class="card-icon">📋</div>
+
+                    <div class="card-content">
+                        <h3>Attendance Management</h3>
+                        <p>Manage student attendance records.</p>
+                    </div>
+
+                    <span class="card-arrow">→</span>
+
+                </a>
+
+
+               
+
+                <!-- Assignment -->
+                <a href="{{ url_for('assignments') }}" class="dashboard-card">
+
+                    <div class="card-number">02</div>
+
+                    <div class="card-icon">📝</div>
+
+                    <div class="card-content">
+                        <h3>Assignment Management</h3>
+                        <p>Manage assignment marks and records.</p>
+                    </div>
+
+                    <span class="card-arrow">→</span>
+
+                </a>
+
+
+                <!-- Test -->
+                <a href="{{ url_for('tests') }}" class="dashboard-card">
+
+                    <div class="card-number">03</div>
+
+                    <div class="card-icon">📚</div>
+
+                    <div class="card-content">
+                        <h3>Test Management</h3>
+                        <p>Manage student test assessments.</p>
+                    </div>
+
+                    <span class="card-arrow">→</span>
+
+                </a>
+
+
+                <!-- Result -->
+                <!--<a href="{{ url_for('semester_result') }}" class="dashboard-card">
+
+                    <div class="card-number">04</div>
+
+                    <div class="card-icon">🏆</div>
+
+                    <div class="card-content">
+                        <h3>Semester Result</h3>
+                        <p>Manage semester examination results.</p>
+                    </div>
+
+                    <span class="card-arrow">→</span>
+
+                </a> -->
+ 
+
+                <!-- Performance -->
+                <a href="{{ url_for('open_teacher_powerbi') }}" class="dashboard-card">
+
+                    <div class="card-number">04</div>
+
+                    <div class="card-icon">📈</div>
+
+                    <div class="card-content">
+                        <h3>Performance Analysis</h3>
+                        <p>Analyze academic performance insights.</p>
+                    </div>
+
+                    <span class="card-arrow">→</span>
+
+                </a>
+
+
+                <!-- Recommendations -->
+                <!-- <a href="{{ url_for('recommendations') }}" class="dashboard-card">
+
+                    <div class="card-number">06</div>
+
+                    <div class="card-icon">💡</div>
+
+                    <div class="card-content">
+                        <h3>Recommendations</h3>
+                        <p>View performance-based recommendations.</p>
+                    </div>
+
+                    <span class="card-arrow">→</span>
+
+                </a> -->
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        Student Performance System
+        <span>•</span>
+        Faculty Workspace
+    </footer>
+
+</body>
+</html>

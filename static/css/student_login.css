@@ -1,0 +1,1016 @@
+/* =====================================================
+   STUDENT LOGIN
+   ===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+
+    color: #f5f7ff;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(255, 120, 80, 0.17),
+            transparent 34%
+        ),
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(90, 100, 255, 0.20),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #100a12 0%,
+            #0d1022 48%,
+            #071529 100%
+        );
+
+    overflow-x: hidden;
+}
+
+
+/* =====================================================
+   BACKGROUND
+   ===================================================== */
+
+.background {
+    position: fixed;
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.glow {
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(2px);
+
+    opacity: 0.5;
+
+    animation:
+        floatGlow 9s ease-in-out infinite alternate;
+}
+
+.glow-one {
+    width: 520px;
+    height: 520px;
+
+    top: -250px;
+    left: -180px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 105, 80, 0.20),
+            transparent 68%
+        );
+}
+
+.glow-two {
+    width: 600px;
+    height: 600px;
+
+    right: -270px;
+    bottom: -300px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(90, 100, 255, 0.22),
+            transparent 68%
+        );
+
+    animation-delay: 2s;
+}
+
+.grid {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 55px 55px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,0.8),
+            transparent 90%
+        );
+}
+
+@keyframes floatGlow {
+
+    from {
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+    to {
+        transform:
+            translate(70px, 45px)
+            scale(1.12);
+    }
+}
+
+
+/* =====================================================
+   TOP BAR
+   ===================================================== */
+
+.topbar {
+    position: relative;
+    z-index: 10;
+
+    width: 100%;
+    height: 72px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    background:
+        rgba(10, 8, 20, 0.72);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(18px);
+}
+
+.brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    font-size: 16px;
+
+    font-weight: 600;
+}
+
+.brand-icon {
+    color: #ff806e;
+
+    font-size: 13px;
+
+    text-shadow:
+        0 0 12px rgba(255,120,100,0.9);
+}
+
+.back-home {
+    color: #c1bdd0;
+
+    text-decoration: none;
+
+    padding: 10px 16px;
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    transition: 0.3s ease;
+}
+
+.back-home:hover {
+    color: #ffffff;
+
+    background:
+        rgba(255,100,80,0.10);
+
+    border-color:
+        rgba(255,120,100,0.40);
+
+    transform:
+        translateX(-3px);
+}
+
+
+/* =====================================================
+   MAIN LAYOUT
+   ===================================================== */
+
+.login-page {
+    position: relative;
+    z-index: 2;
+
+    width: min(1180px, 90%);
+
+    min-height:
+        calc(100vh - 72px);
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        0.9fr 1.1fr;
+
+    align-items: center;
+
+    gap: 90px;
+
+    padding:
+        65px 0 80px;
+}
+
+
+/* =====================================================
+   INTRO
+   ===================================================== */
+
+.intro {
+    animation:
+        introIn 0.9s ease forwards;
+}
+
+@keyframes introIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateX(-35px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+.security-tag {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 8px 13px;
+
+    margin-bottom: 25px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,110,90,0.08);
+
+    border:
+        1px solid rgba(255,120,100,0.22);
+
+    color: #ffb1a5;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #ff9b83;
+
+    box-shadow:
+        0 0 9px #ff9b83;
+
+    animation:
+        pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+
+        transform:
+            scale(1);
+    }
+
+    50% {
+        opacity: 0.45;
+
+        transform:
+            scale(0.75);
+    }
+}
+
+.intro h1 {
+    font-size:
+        clamp(52px, 6vw, 82px);
+
+    line-height: 0.98;
+
+    letter-spacing: -3px;
+
+    font-weight: 800;
+
+    margin-bottom: 25px;
+
+    background:
+        linear-gradient(
+            110deg,
+            #ffffff,
+            #ffe0d8 45%,
+            #9daaff
+        );
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    color: transparent;
+}
+
+.intro h1 span {
+    display: block;
+}
+
+.intro > p {
+    max-width: 520px;
+
+    color: #bdb5c3;
+
+    font-size: 16px;
+
+    line-height: 1.75;
+
+    margin-bottom: 32px;
+}
+
+
+/* =====================================================
+   STUDENT BADGE
+   ===================================================== */
+
+.student-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 15px 20px;
+
+    border-radius: 15px;
+
+    border:
+        1px solid rgba(255,255,255,0.09);
+
+    background:
+        rgba(255,255,255,0.035);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.20);
+
+    backdrop-filter: blur(15px);
+}
+
+.badge-icon {
+    width: 43px;
+    height: 43px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,105,80,0.85),
+            rgba(85,100,240,0.80)
+        );
+
+    font-size: 19px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(150,80,150,0.25);
+}
+
+.student-badge strong {
+    display: block;
+
+    font-size: 12px;
+
+    letter-spacing: 1.5px;
+
+    color: #ffffff;
+
+    margin-bottom: 4px;
+}
+
+.student-badge small {
+    color: #8d8495;
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   LOGIN CARD
+   ===================================================== */
+
+.login-card {
+    width: 100%;
+
+    max-width: 510px;
+
+    justify-self: end;
+
+    padding: 38px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(30,23,42,0.84),
+            rgba(8,14,30,0.91)
+        );
+
+    border:
+        1px solid rgba(255,130,110,0.15);
+
+    box-shadow:
+        0 35px 90px rgba(0,0,0,0.45),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+
+    backdrop-filter: blur(25px);
+
+    animation:
+        cardIn 0.9s ease 0.15s both;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.login-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 12%;
+
+    width: 76%;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,120,100,0.9),
+            transparent
+        );
+
+    box-shadow:
+        0 0 20px rgba(255,100,90,0.8);
+}
+
+@keyframes cardIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(35px)
+            scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =====================================================
+   CARD HEADER
+   ===================================================== */
+
+.card-top {
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    margin-bottom: 10px;
+}
+
+.student-icon {
+    width: 52px;
+    height: 52px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,105,80,0.20),
+            rgba(90,100,255,0.13)
+        );
+
+    border:
+        1px solid rgba(255,120,100,0.25);
+
+    font-size: 22px;
+
+    box-shadow:
+        0 10px 30px
+        rgba(170,80,100,0.18);
+}
+
+.card-label {
+    display: block;
+
+    color: #ff9585;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 4px;
+}
+
+.card-top h2 {
+    font-size: 29px;
+
+    color: #ffffff;
+
+    letter-spacing: -0.8px;
+}
+
+.login-description {
+    color: #918b9c;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    margin-bottom: 32px;
+}
+
+
+/* =====================================================
+   FORM
+   ===================================================== */
+
+.login-form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 23px;
+}
+
+.input-group label {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: #cec8d4;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+
+    left: 17px;
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    color: #8b7785;
+
+    font-size: 13px;
+
+    pointer-events: none;
+}
+
+.input-wrapper input {
+    width: 100%;
+
+    height: 58px;
+
+    padding:
+        0 18px 0 46px;
+
+    border-radius: 13px;
+
+    border:
+        1px solid rgba(190,170,190,0.14);
+
+    outline: none;
+
+    background:
+        rgba(255,255,255,0.045);
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    transition:
+        border 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.input-wrapper input::placeholder {
+    color: #756b7c;
+}
+
+.input-wrapper input:hover {
+    background:
+        rgba(255,255,255,0.06);
+}
+
+.input-wrapper input:focus {
+    border-color:
+        rgba(255,120,100,0.70);
+
+    background:
+        rgba(255,100,80,0.055);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(255,100,80,0.08),
+        0 10px 30px
+        rgba(150,70,100,0.10);
+}
+
+
+/* =====================================================
+   BUTTON
+   ===================================================== */
+
+.login-button {
+    width: 100%;
+
+    height: 60px;
+
+    margin-top: 7px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 13px;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    background:
+        linear-gradient(
+            105deg,
+            #ed654e,
+            #526de0
+        );
+
+    box-shadow:
+        0 12px 30px
+        rgba(180,80,100,0.25);
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.login-button::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.22),
+            transparent
+        );
+
+    transform:
+        skewX(-20deg);
+
+    transition: 0.6s;
+}
+
+.login-button:hover::before {
+    left: 130%;
+}
+
+.login-button:hover {
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 17px 38px
+        rgba(180,80,100,0.34);
+}
+
+.login-button:active {
+    transform:
+        translateY(0);
+}
+
+.arrow {
+    font-size: 20px;
+
+    transition:
+        transform 0.3s ease;
+}
+
+.login-button:hover .arrow {
+    transform:
+        translateX(5px);
+}
+
+
+/* =====================================================
+   CARD FOOTER
+   ===================================================== */
+
+.card-footer {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 25px;
+
+    color: #655d6b;
+
+    font-size: 10px;
+
+    letter-spacing: 0.8px;
+
+    text-transform: uppercase;
+}
+
+.footer-line {
+    width: 35px;
+    height: 1px;
+
+    background:
+        rgba(255,255,255,0.08);
+}
+
+
+/* =====================================================
+   PAGE FOOTER
+   ===================================================== */
+
+footer {
+    position: fixed;
+
+    z-index: 5;
+
+    bottom: 18px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    color: #5c5565;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+    white-space: nowrap;
+}
+
+footer span:first-child {
+    color: #ff8875;
+}
+
+footer span:last-child {
+    margin: 0 7px;
+
+    color: #413b4b;
+}
+
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+    .login-page {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+
+        padding-top: 50px;
+    }
+
+    .intro {
+        text-align: center;
+    }
+
+    .intro > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .student-badge {
+        text-align: left;
+    }
+
+    .login-card {
+        justify-self: center;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+    .topbar {
+        height: 64px;
+
+        padding: 0 20px;
+    }
+
+    .brand {
+        font-size: 13px;
+    }
+
+    .back-home {
+        padding: 8px 11px;
+
+        font-size: 12px;
+    }
+
+    .login-page {
+        width: calc(100% - 32px);
+
+        padding: 38px 0 70px;
+
+        gap: 32px;
+    }
+
+    .intro h1 {
+        font-size: 50px;
+
+        letter-spacing: -2px;
+    }
+
+    .intro > p {
+        font-size: 14px;
+    }
+
+    .security-tag {
+        font-size: 9px;
+    }
+
+    .login-card {
+        padding: 27px 21px;
+
+        border-radius: 21px;
+    }
+
+    .card-top h2 {
+        font-size: 24px;
+    }
+
+    .student-icon {
+        width: 46px;
+        height: 46px;
+
+        font-size: 19px;
+    }
+
+    .input-wrapper input {
+        height: 56px;
+
+        font-size: 15px;
+    }
+
+    .login-button {
+        height: 58px;
+    }
+
+    footer {
+        display: none;
+    }
+}
+
+
+/* =====================================================
+   VERY SMALL MOBILE
+   ===================================================== */
+
+@media (max-width: 380px) {
+
+    .brand {
+        font-size: 11px;
+    }
+
+    .back-home {
+        font-size: 11px;
+    }
+
+    .intro h1 {
+        font-size: 43px;
+    }
+
+    .login-card {
+        padding: 24px 17px;
+    }
+}

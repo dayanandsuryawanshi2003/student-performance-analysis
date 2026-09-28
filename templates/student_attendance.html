@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>My Attendance Report</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/attendance_student.css') }}">
+
+</head>
+
+<body>
+
+    <h1>My Attendance Report</h1>
+
+    <a href="{{ url_for('student_dashboard') }}">
+        Back to Dashboard
+    </a>
+
+    <hr>
+
+    {% if attendance_data %}
+
+    <table border="1" cellpadding="8">
+
+        <tr>
+
+            <th>Subject</th>
+            <th>Type</th>
+            <th>Total Classes</th>
+            <th>Present</th>
+            <th>Absent</th>
+            <th>Attendance %</th>
+
+        </tr>
+
+        {% for row in attendance_data %}
+
+        <tr>
+
+            <td>{{ row.Subject_Name }}</td>
+
+            <td>{{ row.Subject_Type }}</td>
+
+            <td>{{ row.Total_Classes }}</td>
+
+            <td>{{ row.Present }}</td>
+
+            <td>{{ row.Absent }}</td>
+
+            <td>{{ row.Attendance_Percentage }}%</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    {% else %}
+
+        <h3>No attendance record available.</h3>
+
+    {% endif %}
+
+</body>
+
+</html>
